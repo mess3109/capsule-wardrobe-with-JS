@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
-    before_action :current_item
+    before_action :current_item, :only =>[:show, :edit, :update, :destroy]
 
 	def index
 		@items = current_user.items
 	end
 
 	def show
-		@item = Item.find(params[:id])
 	end
 
 	def new
