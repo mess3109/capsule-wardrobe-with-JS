@@ -1,5 +1,8 @@
 <ul>
-  <li> <%= @item.title %></li>
-  <li> <%= @item.category.title %> </li>
-  <li> <%= @item.condition if @item.condition %> </li>
+  <li> Title: <%= @item.title %></li>
+  <li> Category: <%= @item.category.title %> </li>
+  <li> Color: <%= @item.color %> </li>
+  <% if @item.condition %>
+	  <li> Condition: <%= @item.condition %> </li>
+  <% end %>
 </ul>

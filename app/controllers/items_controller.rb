@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
-    before_action :current_item, :only =>[:show, :edit, :update, :destroy]
+    before_action :current_item, :only => [:show, :edit, :update, :destroy]
 
 	def index
 		@items = current_user.items
@@ -12,18 +12,15 @@ class ItemsController < ApplicationController
 	def new
 		@item = Item.new
 		@categories = current_user.categories
-		@item.build_category
 	end
 
 	def create
-		binding.pry
 		@item = current_user.items.build(item_params)
 		if @item.save
 			redirect_to item_path(@item)
 		else
 			redirect_to new_item_path
 		end
-
 	end
 
 	def edit

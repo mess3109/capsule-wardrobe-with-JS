@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :outfits, :through => :items
-  has_many :categories, :through => :items
-  has_many :seasons, :through => :outfits
+  has_many :categories, -> { distinct }, :through => :items
+  has_many :seasons, -> { distinct }, :through => :outfits
 
   # validates :username, :presence => true
   validates :email, :presence => true

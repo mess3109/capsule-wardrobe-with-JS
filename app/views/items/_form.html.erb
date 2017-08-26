@@ -5,10 +5,12 @@
  <%= f.text_field :color %><br>
  <%= f.label :image_url, "Image Url" %>
  <%= f.text_field :image_url %><br>
+ <%= f.label :condition %>
+ <%= f.text_field :condition %><br>
  <%= f.label :category %>
  <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
  Or create a new category: <br>
- <%= f.fields_for :category do |category_fields| %>
+ <%= f.fields_for :category, @item.build_category do |category_fields| %>
  	<%= category_fields.label :title, "New Category" %>
     <%= category_fields.text_field :title %><br>
  <% end %>
