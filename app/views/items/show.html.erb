@@ -1,5 +1,5 @@
 <%= render 'item' %>
 
-<%= link_to "Create New Item", new_item_path %><br> | 
-<%= link_to "Edit Item", item_item_path %><br> | 
-<%= link_to "Delete Item", item_item_path, method: :destroy %><br> | 
+<%= link_to "View Items", items_path %> | 
+<%= link_to "Edit Item", edit_item_path %> | 
+<%= link_to "Delete Item", { :controller => :items, :action => :destroy} , :method => :delete %>

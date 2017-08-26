@@ -3,9 +3,14 @@
  <%= f.text_field :title %><br>
  <%= f.label :color %>
  <%= f.text_field :color %><br>
- <%= f.label :image_url, "Image Url"  %>
+ <%= f.label :image_url, "Image Url" %>
  <%= f.text_field :image_url %><br>
  <%= f.label :category %>
- <%= f.text_field :category %><br>
+ <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
+ Or create a new category: <br>
+ <%= f.fields_for :category do |category_fields| %>
+ 	<%= category_fields.label :title, "New Category" %>
+    <%= category_fields.text_field :title %><br>
+ <% end %>
  <%= f.submit %>
 <% end %>
