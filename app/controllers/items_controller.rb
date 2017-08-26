@@ -11,9 +11,19 @@ class ItemsController < ApplicationController
 
 	def new
 		@item = Item.new
+		@categories = current_user.categories
+		@item.build_category
 	end
 
 	def create
+		binding.pry
+		@item = current_user.items.build(item_params)
+		if @item.save
+			redirect_to item_path(@item)
+		else
+			redirect_to new_item_path
+		end
+
 	end
 
 	def edit
@@ -23,12 +33,18 @@ class ItemsController < ApplicationController
 	end
 
 	def destroy
+		@item.delete
+    	redirect_to items_path
 	end
 
 	private
 	
 	def current_item
 		@item = Item.find(params[:id])
+	end
+
+	def item_params
+		params.require(:item).permit(:title, :color, :condition, :image_url, :category_id, :category_attributes => [:title, :id])
 	end
 
 end
