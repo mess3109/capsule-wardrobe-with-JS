@@ -1,0 +1,11 @@
+<%= form_for @item do |f| %>
+ <%= f.label :title %>
+ <%= f.text_field :title %><br>
+ <%= f.label :color %>
+ <%= f.text_field :color %><br>
+ <%= f.label :image_url, "Image Url"  %>
+ <%= f.text_field :image_url %><br>
+ <%= f.label :category %>
+ <%= f.text_field :category %><br>
+ <%= f.submit %>
+<% end %>

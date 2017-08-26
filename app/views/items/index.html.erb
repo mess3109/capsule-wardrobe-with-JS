@@ -1,1 +1,8 @@
-index.html.erb
+<ul>
+
+<%= link_to "Create New Item", new_item_path %><br>
+
+<% @items.each do |item| %>
+	  <li> <%= link_to item.title, item_path(item) %></li>
+<% end %>
+</ul>
