@@ -4,10 +4,11 @@ class OutfitsController < ApplicationController
 
 	def index
 		@outfits = current_user.outfits
-		@outfits = current_user.outfits
+		@items = current_user.items
 	end
 
 	def show
+		@items = current_outfit.items
 	end
 
 	def new

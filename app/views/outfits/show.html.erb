@@ -1,0 +1,9 @@
+<ul>
+<% @items.each do |item|
+	<li><%= link_to item.title, outfit_item_path(item) %> - <%= item.category.title %></li>
+<% end %>
+</ul>
+
+<%= link_to "Outfits", outfits_path %> | 
+<%= link_to "Edit Outfit", edit_outfit_path %> | 
+<%= link_to "Delete Outfit", { :controller => :outfits, :action => :destroy} , :method => :delete %>

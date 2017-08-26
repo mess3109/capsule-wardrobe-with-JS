@@ -1,0 +1,8 @@
+<ul>
+
+<%= link_to "Create New Outfit", new_outfit_path %><br>
+
+<% @outfits.each do |item| %>
+	  <li> <%= link_to outfit.title, outfit_path(outfit) %></li>
+<% end %>
+</ul>
