@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:github]
 
   has_many :items
+  has_many :outfits, :through => :items
+  has_many :categories, :through => :items
+  has_many :seasons, :through => :outfits
 
   # validates :username, :presence => true
   validates :email, :presence => true
