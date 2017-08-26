@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :seasons
-  resources :item_outfits
+  resources :seasons, :only => [:index, :show]
+  resources :categories, :only => [:index, :show]
+  
   resources :items
   resources :outfits
-  resources :categories, :only => [:show]
   
   root 'static#index', as: 'index'
 
