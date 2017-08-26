@@ -1,0 +1,9 @@
+<h2>Capsule Wardrobe Organizer</h1>
+
+
+<!-- Move to layout -->
+<% if !user_signed_in? %>
+	<%= link_to "Sign up", new_user_registration_path %> <br></br>
+	<%= link_to "Sign in", new_user_session_path %> <br></br>
+	<%= link_to "Sign in with Facebook", user_github_omniauth_authorize_path %>
+<% end %>
