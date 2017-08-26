@@ -4,7 +4,7 @@ class OutfitsController < ApplicationController
 
 	def index
 		@outfits = current_user.outfits
-
+		@outfits = current_user.outfits
 	end
 
 	def show
@@ -25,9 +25,16 @@ class OutfitsController < ApplicationController
 	end
 
 	def edit
+		@seasons = current_user.seasons
 	end
 
 	def update
+		@outfit.update(outfit_params)
+		if @outfit.save
+			redirect_to outfit_path(@outfit)
+		else
+			redirect_to new_outfit_path
+		end
 	end
 
 	def destroy
