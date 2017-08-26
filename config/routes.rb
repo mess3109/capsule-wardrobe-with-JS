@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :seasons
+  resources :item_outfits
   resources :items
   resources :outfits
   resources :categories, :only => [:show]
