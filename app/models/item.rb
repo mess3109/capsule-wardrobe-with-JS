@@ -7,7 +7,6 @@ class Item < ApplicationRecord
 	validates :title, :presence => true
 	validates :color, :presence => true
 	validates :category_id, :presence => true
-	validates :condition, :length => { minimum: 2 }
 
 	def category_attributes=(category)
 		if self.category_id.nil?
