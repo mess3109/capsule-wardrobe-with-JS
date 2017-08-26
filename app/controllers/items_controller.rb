@@ -24,9 +24,16 @@ class ItemsController < ApplicationController
 	end
 
 	def edit
+		@categories = current_user.categories
 	end
 
 	def update
+		@item.update(item_params)
+		if @item.save
+			redirect_to item_path(@item)
+		else
+			redirect_to new_item_path
+		end
 	end
 
 	def destroy
