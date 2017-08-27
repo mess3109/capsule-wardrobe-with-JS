@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
 
 	def show
 		@outfits = @item.outfits
-		binding.pry
 	end
 
 	def new
