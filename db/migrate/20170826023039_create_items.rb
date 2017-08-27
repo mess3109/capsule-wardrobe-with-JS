@@ -6,8 +6,9 @@ class CreateItems < ActiveRecord::Migration[5.1]
     	t.string :image_url
     	t.string :title
     	t.string :color
+      t.string :condition
 
-      	t.timestamps
+      t.timestamps
     end
   end
 end

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170826142320) do
   create_table "item_outfits", force: :cascade do |t|
     t.integer "outfit_id"
     t.integer "item_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,14 +32,16 @@ ActiveRecord::Schema.define(version: 20170826142320) do
     t.string "image_url"
     t.string "title"
     t.string "color"
+    t.string "condition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "outfits", force: :cascade do |t|
     t.integer "season_id"
-    t.string "type"
+    t.string "outfit_type"
     t.string "title"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

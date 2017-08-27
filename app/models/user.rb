@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:github]
 
   has_many :items
-  has_many :outfits, :through => :items
+  has_many :outfits
   has_many :categories, -> { distinct }, :through => :items
   has_many :seasons, -> { distinct }, :through => :outfits
 
