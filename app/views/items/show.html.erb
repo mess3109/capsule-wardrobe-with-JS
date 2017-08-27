@@ -1,5 +1,11 @@
 <%= render 'item' %>
 
+<p>
+<% @outfits.each do |outfit| %>
+	<%= link_to outfit.title, outfit_path(outfit) %>
+<% end %>
+</p>
+
 <%= link_to "Items", items_path %> | 
 <%= link_to "Edit Item", edit_item_path %> | 
 <%= link_to "Delete Item", { :controller => :items, :action => :destroy} , :method => :delete %>
