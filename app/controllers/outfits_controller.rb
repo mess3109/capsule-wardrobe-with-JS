@@ -1,6 +1,8 @@
 class OutfitsController < ApplicationController
     before_action :authenticate_user!
     before_action :outfit, :only => [:show, :edit, :update, :destroy]
+    before_action :seasons, :only => [:new, :create, :edit, :update]
+    before_action :item_outfit, :only => [:new, :create]
 
 	def index
 		@outfits = current_user.outfits
@@ -14,10 +16,6 @@ class OutfitsController < ApplicationController
 
 	def new
 		@outfit = Outfit.new
-		if params[:item_id]
-			@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
-		end
-		@seasons = current_user.seasons
 	end
 
 	def create
@@ -28,16 +26,11 @@ class OutfitsController < ApplicationController
 		if @outfit.save
 			redirect_to outfit_path(@outfit)
 		else
-			if params[:item_id]
-				@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
-			end
-			@seasons = current_user.seasons
 			render :new
 		end
 	end
 
 	def edit
-		@seasons = current_user.seasons
 	end
 
 	def update
@@ -45,7 +38,7 @@ class OutfitsController < ApplicationController
 		if @outfit.save
 			redirect_to outfit_path(@outfit)
 		else
-			redirect_to new_outfit_path
+			render :edit
 		end
 	end
 
@@ -63,7 +56,17 @@ class OutfitsController < ApplicationController
 		end
 	end
 
+	def seasons
+		@seasons = current_user.seasons
+	end
+
 	def outfit_params
 		params.require(:outfit).permit(:title, :outfit_type, :season_id, :season_attributes => [:title], :item => [:item_id])
+	end
+
+	def item_outfit
+		if params[:item_id]
+			@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
+		end
 	end
 end
