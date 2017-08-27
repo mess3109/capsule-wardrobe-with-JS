@@ -16,11 +16,12 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		item = current_user.items.build(item_params)
-		if item.save
-			redirect_to item_path(item)
+		@item = current_user.items.build(item_params)
+		if @item.save
+			redirect_to item_path(@item)
 		else
-			redirect_to new_item_path
+			@categories = current_user.categories
+			render :new
 		end
 	end
 
