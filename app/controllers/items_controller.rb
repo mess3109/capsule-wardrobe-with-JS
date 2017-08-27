@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
     before_action :current_item, :only => [:show, :edit, :update, :destroy]
+    before_action :categories, :only => [:new, :create, :edit, :update]
 
 	def index
 		@items = current_user.items
@@ -12,7 +13,6 @@ class ItemsController < ApplicationController
 
 	def new
 		@item = Item.new
-		@categories = current_user.categories
 	end
 
 	def create
@@ -20,13 +20,11 @@ class ItemsController < ApplicationController
 		if @item.save
 			redirect_to item_path(@item)
 		else
-			@categories = current_user.categories
 			render :new
 		end
 	end
 
 	def edit
-		@categories = current_user.categories
 	end
 
 	def update
@@ -34,7 +32,7 @@ class ItemsController < ApplicationController
 		if @item.save
 			redirect_to item_path(@item)
 		else
-			redirect_to new_item_path
+			render :edit
 		end
 	end
 
@@ -54,6 +52,10 @@ class ItemsController < ApplicationController
 
 	def item_params
 		params.require(:item).permit(:title, :color, :condition, :image_url, :category_id, :category_attributes => [:title])
+	end
+
+	def categories
+		@categories = current_user.categories
 	end
 
 end
