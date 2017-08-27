@@ -4,6 +4,12 @@
 <% end %>
 </ul>
 
+Add clothing to outfit:
+
+<% @all_user_items.each do |item| %>
+   <%= link_to item.title, item_path(item) %> | <%= link_to 'Add to Outfit', item_outfits_path(item_id: item) %></p>
+<% end %>
+
 <%= link_to "Outfits", outfits_path %> | 
 <%= link_to "Edit Outfit", edit_outfit_path %> | 
 <%= link_to "Delete Outfit", { :controller => :outfits, :action => :destroy} , :method => :delete %>
