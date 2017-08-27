@@ -8,7 +8,7 @@ class OutfitsController < ApplicationController
 	end
 
 	def show
-		@items = current_outfit.items
+		@items = @outfit.items
 	end
 
 	def new
@@ -17,9 +17,9 @@ class OutfitsController < ApplicationController
 	end
 
 	def create
-		@outfit = current_user.outfits.build(outfit_params)
-		if @outfit.save
-			redirect_to outfit_path(@outfit)
+		outfit = current_user.outfits.build(outfit_params)
+		if outfit.save
+			redirect_to outfit_path(outfit)
 		else
 			redirect_to new_outfit_path
 		end
@@ -53,8 +53,8 @@ class OutfitsController < ApplicationController
 	
 	def outfit
 		@outfit = Outfit.find(params[:id])
-		if current_user != @outfit.user
-			redirect_to root_path
+		if @outfit.user != current_user
+			redirect_to outfits_path
 		end
 	end
 

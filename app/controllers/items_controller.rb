@@ -15,9 +15,9 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		@item = current_user.items.build(item_params)
-		if @item.save
-			redirect_to item_path(@item)
+		item = current_user.items.build(item_params)
+		if item.save
+			redirect_to item_path(item)
 		else
 			redirect_to new_item_path
 		end
@@ -45,8 +45,8 @@ class ItemsController < ApplicationController
 	
 	def current_item
 		@item = Item.find(params[:id])
-		if current_user != @item.user
-			redirect_to root_path
+		if @item.user != current_user
+			redirect_to items_path
 		end
 	end
 
