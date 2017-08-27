@@ -1,10 +1,12 @@
+<%= render 'outfit' %>
+
 <ul>
 <% @items.each do |item| %>
 	<li> <%= link_to item.title, outfit_item_path(item) %> - <%= item.category.title %></li>
 <% end %>
 </ul>
 
-Add clothing to outfit:
+<p>Add clothing to outfit:</p>
 
 <% @all_user_items.each do |item| %>
    <%= link_to item.title, item_path(item) %> | <%= link_to 'Add to Outfit', item_outfits_path(item_id: item) %></p>
