@@ -21,14 +21,18 @@ class OutfitsController < ApplicationController
 	end
 
 	def create
-		current_user.current_outfit = current_user.outfits.build(outfit_params)
+		@outfit = current_user.outfits.build(outfit_params)
 		if !params[:outfit][:item][:item_id].empty?
-		    current_user.current_outfit.add_item(params[:outfit][:item][:item_id])
+		    @outfit.add_item(params[:outfit][:item][:item_id])
 		end	
-		if current_user.current_outfit.save
-			redirect_to outfit_path(current_user.current_outfit)
+		if @outfit.save
+			redirect_to outfit_path(@outfit)
 		else
-			redirect_to new_outfit_path
+			if params[:item_id]
+				@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
+			end
+			@seasons = current_user.seasons
+			render :new
 		end
 	end
 
@@ -51,12 +55,6 @@ class OutfitsController < ApplicationController
 	end
 
 	private
-
-	def check_user
-		if current_user != current_outfit.user
-			redirect_to root_path
-		end
-	end
 	
 	def outfit
 		@outfit = Outfit.find(params[:id])
