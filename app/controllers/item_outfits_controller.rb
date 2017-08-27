@@ -5,8 +5,12 @@ class ItemOutfitsController < ApplicationController
 	    #   	# current_user.current_cart = Cart.new
 	    #   	# current_user.save
 	    # end
-	    line_item = current_user.current_outfit.add_item(params[:item_id])
-	    line_item.save
+	    # item = Item.find(params[:item_id])
+
+	    current_user.current_outfit = Outfit.find(params[:outfit_id])
+	    item_outfit = current_user.current_outfit.add_item(params[:item_id])
+	    binding.pry
+	    item_outfit.save
 	    redirect_to outfit_path(current_user.current_outfit)
 	end
 end

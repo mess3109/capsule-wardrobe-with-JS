@@ -15,11 +15,7 @@ class Outfit < ApplicationRecord
 	end
 
 	def add_item(item_id)
-	    if item_outfit = self.item_outfits.find_by(item_id: item_id)
-	    else
-	      line_item = self.line_items.new(item_id: item_id)
-	    end
-	    line_item
-	  end
+	    item_outfit = self.item_outfits.build(item_id: item_id, user: self.user)
+	end
 
 end
