@@ -1,6 +1,6 @@
 class OutfitsController < ApplicationController
     before_action :authenticate_user!
-    before_action :current_outfit, :only => [:show, :edit, :update, :destroy]
+    before_action :outfit, :only => [:show, :edit, :update, :destroy]
 
 	def index
 		@outfits = current_user.outfits
@@ -44,9 +44,18 @@ class OutfitsController < ApplicationController
 	end
 
 	private
+
+	def check_user
+		if current_user != current_outfit.user
+			redirect_to root_path
+		end
+	end
 	
-	def current_outfit
+	def outfit
 		@outfit = Outfit.find(params[:id])
+		if current_user != @outfit.user
+			redirect_to root_path
+		end
 	end
 
 	def outfit_params
