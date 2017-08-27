@@ -15,17 +15,15 @@ class OutfitsController < ApplicationController
 	def new
 		@outfit = Outfit.new
 		if params[:item_id]
-			@item_outfit = ItemOutfit.new
+			@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
 		end
 		@seasons = current_user.seasons
 	end
 
-	def create	
-	binding.pry	
+	def create
 		current_user.current_outfit = current_user.outfits.build(outfit_params)
 		if !params[:outfit][:item][:item_id].empty?
-		    item_outfit = current_user.current_outfit.add_item(params[:outfit][:item][:item_id])
-		    item_outfit.save
+		    current_user.current_outfit.add_item(params[:outfit][:item][:item_id])
 		end	
 		if current_user.current_outfit.save
 			redirect_to outfit_path(current_user.current_outfit)

@@ -19,6 +19,7 @@ class Outfit < ApplicationRecord
 
 	def add_item(item_id)
 	    item_outfit = self.item_outfits.build(item_id: item_id, user: self.user)
+	    item_outfit.save
 	end
 
 end
