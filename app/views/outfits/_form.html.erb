@@ -6,7 +6,7 @@
  <%= f.label :season %>
  <%= f.collection_select :season_id, @seasons, :id, :title, include_blank: true %><br>
 Or create a new season: <br>
- <%= f.fields_for :category, @outfit.build_season do |season_fields| %>
+ <%= f.fields_for :season, @outfit.build_season do |season_fields| %>
  	<%= season_fields.label :title, "New Season" %>
     <%= season_fields.text_field :title %><br>
  <% end %>

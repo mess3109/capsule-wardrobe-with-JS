@@ -2,7 +2,7 @@
 
 <%= link_to "Create New Outfit", new_outfit_path %><br>
 
-<% @outfits.each do |item| %>
+<% @outfits.each do |outfit| %>
 	  <li> <%= link_to outfit.title, outfit_path(outfit) %></li>
 <% end %>
 </ul>
