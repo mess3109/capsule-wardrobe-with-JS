@@ -2,7 +2,7 @@
   <li> Title: <%= @item.title %></li>
   <li> Category: <%= @item.category.title %> </li>
   <li> Color: <%= @item.color %> </li>
-  <% if @item.condition %>
+  <% if !@item.condition.empty? %>
 	  <li> Condition: <%= @item.condition %> </li>
   <% end %>
 </ul>
