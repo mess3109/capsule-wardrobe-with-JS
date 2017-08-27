@@ -17,6 +17,7 @@ class OutfitsController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		@outfit = current_user.outfits.build(outfit_params)
 		if @outfit.save
 			redirect_to outfit_path(@outfit)
@@ -50,6 +51,6 @@ class OutfitsController < ApplicationController
 	end
 
 	def outfit_params
-		params.require(:outfit).permit()
+		params.require(:outfit).permit(:title, :outfit_type, :season_id, :season_attributes => [:title, :id])
 	end
 end
