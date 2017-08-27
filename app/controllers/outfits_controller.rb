@@ -9,6 +9,7 @@ class OutfitsController < ApplicationController
 
 	def show
 		@items = @outfit.items
+		@all_user_items = @current_user.items
 	end
 
 	def new
