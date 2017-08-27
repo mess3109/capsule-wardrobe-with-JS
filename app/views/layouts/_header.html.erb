@@ -2,6 +2,8 @@
  
 <% if user_signed_in? %>
   	<%= "#{current_user.email}" %> |
+  	<%= link_to "Clothing", items_path %> |
+  	<%= link_to "Outfits", outfits_path %> |
  	<%= link_to("Sign out", destroy_user_session_path, method: :delete) %>
 
 <% else %>

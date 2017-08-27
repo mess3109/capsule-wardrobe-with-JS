@@ -9,7 +9,6 @@
 
 <p><%= link_to "Create New Outfit", new_item_outfit_path(@item) %></p>
 
-<p><%= link_to "Clothing", items_path %> | 
-<%= link_to "Edit", edit_item_path %> | 
+<p><%= link_to "Edit", edit_item_path %> | 
 <%= link_to "Delete", { :controller => :items, :action => :destroy}, :method => :delete %>
 </p>
