@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :outfits, only: [:show, :index, :new, :create, :edit]
   end
 
-  resources :item_outfits, only: [:create]
+  resources :item_outfits, only: [:create, :destroy]
 
   root 'static#index'
 
