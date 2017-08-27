@@ -1,12 +1,14 @@
 <%= render 'item' %>
 
-<p>Currently in the following outfits:</p>
-<% @outfits.each do |outfit| %>
-	<%= link_to outfit.title, item_outfit_path(@item, outfit) %><br>
+<% if !@outfits.empty? %>
+	<p>Currently in the following outfits:</p>
+	<% @outfits.each do |outfit| %>
+		<%= link_to outfit.title, item_outfit_path(@item, outfit) %><br>
+	<% end %>
 <% end %>
 
 
-<p><%= link_to "Items", items_path %> | 
-<%= link_to "Edit Item", edit_item_path %> | 
-<%= link_to "Delete Item", { :controller => :items, :action => :destroy} , :method => :delete %>
+<p><%= link_to "Clothing", items_path %> | 
+<%= link_to "Edit", edit_item_path %> | 
+<%= link_to "Delete", { :controller => :items, :action => :destroy} , :method => :delete %>
 </p>
