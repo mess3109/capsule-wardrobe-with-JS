@@ -6,15 +6,15 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:github]
 
   has_many :items
+  has_many :item_outfits
   has_many :outfits
   has_many :categories, -> { distinct }, :through => :items
   has_many :seasons, -> { distinct }, :through => :outfits
 
-  # validates :username, :presence => true
   validates :email, :presence => true
   validates :password, :presence => true
 
-  belongs_to :current_outfit, :class_name => "Outfit"
+  belongs_to :current_outfit, :class_name => "Outfit", :optional => true
 
   def self.from_omniauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
