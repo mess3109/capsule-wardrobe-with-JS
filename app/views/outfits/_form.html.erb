@@ -12,16 +12,15 @@
  	<%= item.hidden_field :item_id %>
  <% end %>
 
- <%= f.label :title %>
+ <%= f.label :title %>: 
  <%= f.text_field :title %><br>
- <%= f.label :outfit_type %>
+ <%= f.label :outfit_type %>: 
  <%= f.text_field :outfit_type %><br>
- <%= f.label :season %>
+ <%= f.label :season %>: 
  <%= f.collection_select :season_id, @seasons, :id, :title, include_blank: true %><br>
-Or create a new season: <br>
 
  <%= f.fields_for :season, @outfit.build_season do |season_fields| %>
- 	<%= season_fields.label :title, "New Season" %>
+ 	<%= season_fields.label :title, "Or create a new Season" %>
     <%= season_fields.text_field :title %><br>
  <% end %>
 

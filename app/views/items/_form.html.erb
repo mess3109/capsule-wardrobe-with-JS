@@ -7,19 +7,20 @@
 <% end %>
 
 <%= form_for @item do |f| %>
- <%= f.label :title %>
+ <%= f.label :title %>: 
  <%= f.text_field :title %><br>
- <%= f.label :color %>
+ <%= f.label :color %>: 
  <%= f.text_field :color %><br>
- <%= f.label :image_url, "Image Url" %>
- <%= f.text_field :image_url %><br>
- <%= f.label :condition %>
+ <%= f.label :brand %>: 
+ <%= f.text_field :brand %><br>
+ <%= f.label :condition %>: 
  <%= f.text_field :condition %><br>
- <%= f.label :category %>
+ <%= f.label :image_url, "Image Url" %>: 
+ <%= f.text_field :image_url %><br>
+ <%= f.label :category %>: 
  <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
- Or create a new category: <br>
  <%= f.fields_for :category, @item.build_category do |category_fields| %>
- 	<%= category_fields.label :title, "New Category" %>
+ 	<%= category_fields.label :title, "Or create a new Category: " %>
     <%= category_fields.text_field :title %><br>
  <% end %>
  <%= f.submit %>
