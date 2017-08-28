@@ -1,8 +1,8 @@
-<h4> <%= @item.title %></h4>
+<h4> <%= @item.title.titleize %></h4>
 <ul>
-  <li> Category: <%= @item.category.title %> </li>
+  <li> Category: <%= @item.category.title.titleize %> </li>
   <li> Color: <%= @item.color %> </li>
-  <% if !@item.condition.empty? %>
+  <% if !@item.condition.nil? %>
 	  <li> Condition: <%= @item.condition %> </li>
   <% end %>
 </ul>

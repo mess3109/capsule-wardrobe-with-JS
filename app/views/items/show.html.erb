@@ -2,9 +2,11 @@
 
 <% if !@outfits.empty? %>
 	<p>Currently in the following outfits:</p>
+	<ul>
 	<% @outfits.each do |outfit| %>
-		<%= link_to outfit.title, item_outfit_path(@item, outfit) %><br>
+		<li><%= link_to outfit.title.titleize, item_outfit_path(@item, outfit) %></li>
 	<% end %>
+	</ul>
 <% end %>
 
 <p><%= link_to "Create New Outfit", new_item_outfit_path(@item) %></p>
