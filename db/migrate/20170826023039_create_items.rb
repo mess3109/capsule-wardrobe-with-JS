@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
     	t.string :title
     	t.string :color
       t.string :condition
+      t.string :brand
 
       t.timestamps
     end
