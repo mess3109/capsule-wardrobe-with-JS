@@ -1,10 +1,12 @@
 <%= link_to "Home", root_url %> | 
  
 <% if user_signed_in? %>
-  	<%= "#{current_user.email}" %> |
-  	<%= link_to "Clothing", items_path %> |
-  	<%= link_to "Outfits", outfits_path %> |
- 	<%= link_to("Sign out", destroy_user_session_path, method: :delete) %>
+  	<%= "#{current_user.email}" %>  | 
+  	<%= link_to "All Clothing", items_path %> |  
+  	<%= link_to "Add New Clothing Item", new_item_path %> | 
+  	<%= link_to "All Outfits", outfits_path %> | 
+  	<%= link_to "Add New Outfit", new_outfit_path %> | 
+ 	<%= link_to("Sign out", destroy_user_session_path, :method => :delete) %>
 
 <% else %>
 	<%= link_to("Sign up", new_user_registration_path) %> |
