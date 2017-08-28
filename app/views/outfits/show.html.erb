@@ -5,18 +5,20 @@
 
 	<ul>
 	<% @items.each do |item| %>
-		<li> <%= link_to item.title, outfit_item_path(@outfit, item) %> - <%= item.category.title %> - <%= link_to "Remove from Outfit", { :controller => :item_outfits, :action => :destroy, :item => item, :outfit => @outfit }, :method => :delete %></li>
+		<li> <%= link_to item.title.titleize, outfit_item_path(@outfit, item) %> - <%= item.category.title.titleize %> - <%= link_to "Remove from Outfit", { :controller => :item_outfits, :action => :destroy, :item => item, :outfit => @outfit }, :method => :delete %></li>
 	<% end %>
+	</ul>
 <% end %>
 
 </ul>
 
 <% if !@all_user_items.empty? %>
 	<p>Add clothing to outfit:</p>
-
+	<ul>
 	<% @all_user_items.each do |item| %>
-	   <%= link_to item.title, item_path(item) %> | <%= link_to 'Add to Outfit', {:controller => :item_outfits, :action => :create, :item_id => item.id, :outfit_id => @outfit.id}, :method => :post %><br>
+	   <li> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <%= link_to 'Add to Outfit', {:controller => :item_outfits, :action => :create, :item_id => item.id, :outfit_id => @outfit.id}, :method => :post %></li>
 	<% end %>
+	</ul>
 <% end %>
 
 <p>

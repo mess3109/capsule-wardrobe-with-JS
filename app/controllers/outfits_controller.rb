@@ -20,8 +20,9 @@ class OutfitsController < ApplicationController
 
 	def create
 		@outfit = current_user.outfits.build(outfit_params)
-		if !params[:outfit][:item][:item_id].empty?
-		    @outfit.add_item(params[:outfit][:item][:item_id])
+		binding.pry
+		if !params[:outfit][:item_outfit][:item_id].empty?
+		    @outfit.add_item(params[:outfit][:item_outfit][:item_id])
 		end	
 		if @outfit.save
 			redirect_to outfit_path(@outfit)
@@ -61,11 +62,12 @@ class OutfitsController < ApplicationController
 	end
 
 	def outfit_params
-		params.require(:outfit).permit(:title, :outfit_type, :season_id, :season_attributes => [:title], :item => [:item_id])
+		params.require(:outfit).permit(:title, :outfit_type, :season_id, :season_attributes => [:title], :item_outfit_attributes => [:item_id])
 	end
 
 	def item_outfit
 		if params[:item_id]
+			# @item_outfit = ItemOutfit.new(:item_id => params[:item_id])
 			@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
 		end
 	end

@@ -1,3 +1,5 @@
+<h4>Add New Outfit</h4>
+
 <% if @outfit.errors.any? %>
    <ul>
     <% @outfit.errors.full_messages.each do |msg| %>
@@ -8,15 +10,15 @@
 
 <%= form_for @outfit do |f| %>
 
- <%= f.fields_for :item, @item_outfit do |item| %>
+ <%= f.fields_for :item_outfit, @item_outfit do |item| %>
  	<%= item.hidden_field :item_id %>
  <% end %>
 
- <%= f.label :title %>: 
+ <%= f.label :title %>
  <%= f.text_field :title %><br>
- <%= f.label :outfit_type %>: 
+ <%= f.label :outfit_type %>
  <%= f.text_field :outfit_type %><br>
- <%= f.label :season %>: 
+ <%= f.label :season %>
  <%= f.collection_select :season_id, @seasons, :id, :title, include_blank: true %><br>
 
  <%= f.fields_for :season, @outfit.build_season do |season_fields| %>
