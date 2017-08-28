@@ -1,9 +1,46 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
+
 body {
+  font-size: 14px;
+  font-family: arial;
+  margin: 0;
+}
+
+.main {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  
-  font-size: 14px;
+}
+
+.navbar {
+    border-bottom: 1px solid black;
+    text-align: left;
+    background: #555;
+    padding: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+ .navbar a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+ /* links*/
+
+.main a {
+    color: gray;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+/* selected link */
+a:active {
+    color: gray;
 }
