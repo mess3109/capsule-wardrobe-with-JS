@@ -20,7 +20,6 @@ class OutfitsController < ApplicationController
 
 	def create
 		@outfit = current_user.outfits.build(outfit_params)
-		binding.pry
 		if !params[:outfit][:item_outfit][:item_id].empty?
 		    @outfit.add_item(params[:outfit][:item_outfit][:item_id])
 		end	
@@ -67,7 +66,6 @@ class OutfitsController < ApplicationController
 
 	def item_outfit
 		if params[:item_id]
-			# @item_outfit = ItemOutfit.new(:item_id => params[:item_id])
 			@item_outfit = ItemOutfit.new(:item_id => params[:item_id])
 		end
 	end
