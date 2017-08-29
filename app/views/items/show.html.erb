@@ -1,6 +1,6 @@
 <%= render 'item' %>
 
-<% if !@outfits.empty? %>
+<% if included_in_outfits?(@item) %>
 	<p>Currently in the following outfits:</p>
 	<ul>
 	<% @outfits.each do |outfit| %>
