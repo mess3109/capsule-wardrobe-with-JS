@@ -40,6 +40,10 @@ class ItemsController < ApplicationController
     	redirect_to items_path
 	end
 
+	def most_used
+		render 'most_used'
+	end
+
 	private
 	
 	def current_item
