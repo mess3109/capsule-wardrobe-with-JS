@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
     before_action :categories, :only => [:new, :create, :edit, :update]
 
 	def index
-		@items = current_user.items_sorted_by_category
 	end
 
 	def show
