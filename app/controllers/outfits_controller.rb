@@ -6,7 +6,6 @@ class OutfitsController < ApplicationController
     before_action :item_outfit, :only => [:new, :create]
 
 	def index
-		@outfits = current_user.outfits
 	end
 
 	def show

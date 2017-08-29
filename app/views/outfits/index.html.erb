@@ -1,7 +1,7 @@
 <h4>All Outfits</h4>
 
 <ul>
-<% @outfits.sort_by { |outfit| outfit.season.title }.each do |outfit| %>
+<% current_user.outfits.sort_by { |outfit| outfit.season.title }.each do |outfit| %>
 	  <li> <%= link_to outfit.title, outfit_path(outfit) %> - <%= outfit.season.title %></li>
 <% end %>
 </ul>
