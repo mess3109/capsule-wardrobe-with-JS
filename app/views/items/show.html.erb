@@ -1,13 +1,6 @@
 <%= render 'item' %>
 
-<% if included_in_outfits?(@item) %>
-	<p>Currently in the following outfits:</p>
-	<ul>
-	<% @outfits.each do |outfit| %>
-		<li><%= link_to outfit.title.titleize, item_outfit_path(@item, outfit) %></li>
-	<% end %>
-	</ul>
-<% end %>
+<%= render partial: 'outfits/item_outfits', :locals =>  { :item => @item } if has_outfits?(@item) %>
 
 <p><%= link_to "Create New Outfit", new_item_outfit_path(@item) %></p>
 

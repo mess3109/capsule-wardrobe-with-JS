@@ -1,7 +1,7 @@
 <h4>All Clothing Items</h4>
 
 <ul>
-<% @items.sort_by { |item| item.category }.each do |item| %>
+<% @items.each do |item| %>
 	  <li> <%= link_to item.title, item_path(item) %> - <%= item.category.title %></li>
 <% end %>
 </ul>

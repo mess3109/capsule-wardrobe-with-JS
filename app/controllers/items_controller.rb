@@ -4,11 +4,10 @@ class ItemsController < ApplicationController
     before_action :categories, :only => [:new, :create, :edit, :update]
 
 	def index
-		@items = current_user.items
+		@items = current_user.items.sort_by { |item| item.category }
 	end
 
 	def show
-		@outfits = @item.outfits
 	end
 
 	def new

@@ -1,0 +1,6 @@
+<p>Currently in the following outfits:</p>
+	<ul>
+	<% item.outfits.each do |outfit| %>
+		<li><%= link_to outfit.title.titleize, item_outfit_path(item, outfit) %></li>
+	<% end %>
+	</ul>
