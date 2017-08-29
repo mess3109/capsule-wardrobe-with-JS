@@ -1,4 +1,4 @@
-<%= render 'outfit' %>
+<%= render partial: 'outfit', :locals => { :outfit => @outfit } %>
 
 <%= render partial: 'items/remove_clothing', :locals => { :outfit => @outfit } if has_items?(@outfit) %>
 
