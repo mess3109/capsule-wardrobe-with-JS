@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
     before_action :current_item, :only => [:show, :edit, :update, :destroy]
+    before_action :check_user, :only => [:show, :edit, :update, :destroy]
     before_action :categories, :only => [:new, :create, :edit, :update]
 
 	def index
@@ -47,6 +48,9 @@ class ItemsController < ApplicationController
 	
 	def current_item
 		@item = Item.find(params[:id])
+	end
+
+	def check_user
 		if @item.user != current_user
 			redirect_to items_path
 		end

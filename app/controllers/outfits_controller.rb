@@ -1,6 +1,7 @@
 class OutfitsController < ApplicationController
     before_action :authenticate_user!
     before_action :outfit, :only => [:show, :edit, :update, :destroy]
+    before_action :check_user, :only => [:show, :edit, :update, :destroy]
     before_action :seasons, :only => [:new, :create, :edit, :update]
     before_action :item_outfit, :only => [:new, :create]
 
@@ -46,12 +47,22 @@ class OutfitsController < ApplicationController
 
 	private
 	
-	def outfit
-		@outfit = Outfit.find(params[:id])
+
+	def check_user
 		if @outfit.user != current_user
 			redirect_to outfits_path
 		end
 	end
+	
+	def outfit
+		@outfit = Outfit.find(params[:id])
+	end
+
+	# def check_user
+	# 	if @outfit.user != current_user
+	# 		redirect_to outfits_path
+	# 	end
+	# end
 
 	def seasons
 		@seasons = current_user.seasons
