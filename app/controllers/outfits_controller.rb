@@ -47,22 +47,15 @@ class OutfitsController < ApplicationController
 
 	private
 	
+	def outfit
+		@outfit = Outfit.find(params[:id])
+	end
 
 	def check_user
 		if @outfit.user != current_user
 			redirect_to outfits_path
 		end
 	end
-	
-	def outfit
-		@outfit = Outfit.find(params[:id])
-	end
-
-	# def check_user
-	# 	if @outfit.user != current_user
-	# 		redirect_to outfits_path
-	# 	end
-	# end
 
 	def seasons
 		@seasons = current_user.seasons
