@@ -13,4 +13,15 @@ class Item < ApplicationRecord
 		    self.category = Category.find_or_create_by(title: category["title"])
 		end
 	end
+
+	scope :most_used_items, -> {
+    select("*, count(item_outfits.id) AS outfits_count").
+    left_joins(:item_outfits).
+    group("items.id").
+    order("outfits_count DESC")}
+
+	def self.most_used_items_n(n)
+    	self.most_used_items.limit(n)
+  	end
+ 
 end
