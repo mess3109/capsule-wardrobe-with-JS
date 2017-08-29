@@ -5,13 +5,11 @@ class OutfitsController < ApplicationController
     before_action :item_outfit, :only => [:new, :create]
 
 	def index
-		@outfits = current_user.outfits
-		@items = current_user.items
+		@outfits = current_user.outfits_sorted_by_season
 	end
 
 	def show
-		@items = @outfit.items
-		@all_user_items = @current_user.items
+		@items = @outfit.items_sorted_by_category
 	end
 
 	def new
