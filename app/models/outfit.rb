@@ -21,4 +21,8 @@ class Outfit < ApplicationRecord
 	    item_outfit.save
 	end
 
+	def items_sorted_by_category
+  		self.items.sort_by { |item| item.category.title }
+  	end
+
 end

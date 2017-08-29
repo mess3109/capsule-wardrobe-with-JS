@@ -23,5 +23,9 @@ class Item < ApplicationRecord
 	def self.most_used_items_n(n)
     	self.most_used_items.limit(n)
   	end
+
+  	def outfits_sorted_by_season
+  		self.outfits.sort_by { |outfit| outfit.season.title }
+  	end
  
 end

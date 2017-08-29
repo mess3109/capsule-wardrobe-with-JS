@@ -24,4 +24,12 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def items_sorted_by_category
+    self.items.sort_by { |item| item.category.title }
+  end
+
+  def outfits_sorted_by_season
+    self.outfits.sort_by { |outfit| outfit.season.title }
+  end
 end
