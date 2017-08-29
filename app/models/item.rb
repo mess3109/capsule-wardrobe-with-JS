@@ -20,8 +20,8 @@ class Item < ApplicationRecord
     group("items.id").
     order("outfits_count DESC")}
 
-	def self.most_used_items_n(n)
-    	self.most_used_items.limit(n)
+  	def self.by_user(user)
+  		self.most_used_items.where(:user_id => user.id)
   	end
 
   	def outfits_sorted_by_season
