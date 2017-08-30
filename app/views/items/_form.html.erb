@@ -1,21 +1,21 @@
 <%= form_for @item do |f| %>
 
- <%= f.label :title %>
+ <%= f.label :title %>:<br>
  <%= f.text_field :title %><br>
- <%= f.label :color %>
+ <%= f.label :color %>:<br>
  <%= f.text_field :color %><br>
- <%= f.label :brand %>
+ <%= f.label :brand %>:<br>
  <%= f.text_field :brand %><br>
- <%= f.label :condition %> 
+ <%= f.label :condition %>:<br>
  <%= f.text_field :condition %><br>
- <%= f.label :image_url, "Image Url" %>
+ <%= f.label :image_url, "Image Url" %>:<br>
  <%= f.text_field :image_url %><br>
- <%= f.label :category %>
+ <%= f.label :category %>:<br>
  <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
- <%= f.fields_for :category, @item.build_category do |category_fields| %>
- 	<%= category_fields.label :title, "Or create a new Category: " %>
+ <%= f.fields_for :category, @item.build_category do |category_fields| %><br>
+ 	<%= category_fields.label :title, "Or create a new Category" %>:<br>
     <%= category_fields.text_field :title %><br>
  <% end %>
 
- <%= f.submit 'Add to Wardobe' %>
+ <%= f.submit %>
 <% end %>
