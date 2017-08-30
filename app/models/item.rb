@@ -18,10 +18,10 @@ class Item < ApplicationRecord
     select("*, count(item_outfits.id) AS outfits_count").
     left_joins(:item_outfits).
     group("items.id").
-    order("outfits_count DESC")}
+    order("outfits_count DESC") }
 
   	def self.by_user(user)
-  		self.most_used_items.where(:user_id => user.id)
+		self.most_used_items.where(:user_id => user.id)
   	end
 
   	def outfits_sorted_by_season
