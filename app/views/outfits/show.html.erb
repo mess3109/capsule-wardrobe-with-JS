@@ -2,7 +2,7 @@
 
 <%= render partial: 'items/remove_clothing', :locals => { :outfit => @outfit } if has_items?(@outfit) %>
 
-<%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit } if has_items?(current_user) %>
+<%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit, :items => (current_user.items - @outfit.items).sort_by{ |item| item.category.title } } if has_items?(current_user) %>
 
 <p>
 <%= link_to "Edit", edit_outfit_path %> | 

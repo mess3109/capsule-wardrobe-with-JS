@@ -1,6 +1,6 @@
 	<p>Add clothing to outfit:</p>
 	<ul>
-	<% current_user.items_sorted_by_category.each do |item| %>
+	<% items.each do |item| %>
 	   <li> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <%= link_to 'Add to Outfit', {:controller => :item_outfits, :action => :create, :item_id => item.id, :outfit_id => outfit.id}, :method => :post %></li>
 	<% end %>
 	</ul>
