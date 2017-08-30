@@ -4,8 +4,6 @@ class Outfit < ApplicationRecord
 	belongs_to :season
 	belongs_to :user
 
-	accepts_nested_attributes_for :item_outfits
-
 	validates :title, :presence => true
 	validates :season_id, :presence => true
 	validates :outfit_type, :presence => true
