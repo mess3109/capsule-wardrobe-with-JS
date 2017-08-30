@@ -21,9 +21,9 @@ class Item < ApplicationRecord
     order("outfits_count DESC") }
 
   	def self.by_user(user)
-		self.most_used_items.where(:user_id => user.id)
+		where(:user_id => user.id)
   	end
-
+  	
   	def outfits_sorted_by_season
   		self.outfits.sort_by { |outfit| outfit.season.title }
   	end
