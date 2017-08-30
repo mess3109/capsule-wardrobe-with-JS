@@ -23,6 +23,10 @@ body {
   clear: both;
 }*/
 
+.error_messages {
+  color: red;
+}
+
 .navbar {
     border-bottom: 1px solid black;
     text-align: left;
