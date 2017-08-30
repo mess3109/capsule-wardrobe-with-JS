@@ -1,4 +1,5 @@
 <h4>Add New Outfit</h4>
 
-<%= render 'form' %>
+<%= render :partial => 'layouts/errors', :locals => { :object => @outfit } if @outfit.errors.any? %>
 
+<%= render 'form' %>
