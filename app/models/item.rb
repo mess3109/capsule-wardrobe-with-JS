@@ -20,6 +20,12 @@ class Item < ApplicationRecord
     group("items.id").
     order("outfits_count DESC") }
 
+	scope :least_used_items, -> {
+    select("*, count(item_outfits.id) AS outfits_count").
+    left_joins(:item_outfits).
+    group("items.id").
+    order("outfits_count ASC") }
+
   	def self.by_user(user)
 		where(:user_id => user.id)
   	end

@@ -41,6 +41,14 @@ class ItemsController < ApplicationController
 	end
 
 	def most_used
+		@most_or_least_used = Item.most_used_items.by_user(current_user).limit(5)
+		@most_or_least = "Most"
+		render 'most_used'
+	end
+
+	def least_used
+		@most_or_least_used = Item.least_used_items.by_user(current_user).limit(5)
+		@most_or_least = "Least"
 		render 'most_used'
 	end
 
