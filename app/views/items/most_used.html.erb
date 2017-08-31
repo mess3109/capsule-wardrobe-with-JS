@@ -1,10 +1,7 @@
-<h3>Top 5 Most Used Items</h3>
+<h3>Top 5 <%= @most_or_least %> Used Items</h3>
 
 <ol>
-<% Item.most_used_items.by_user(current_user).limit(5).each do |item| %>
-<% if item.outfits_count > 0 %>
-	<li><%= link_to item.title.titleize, { :controller => :items, :action => :show, :id => item.item_id.to_s } %> | <%= item.category.title.titleize %> | <%= pluralize(item.outfits_count, "outfit") %></li> 
-	<% end %>
 
-<% end %>
+<%= render :partial => 'items_used', :locals => { :most_or_least_array => @most_or_least_used } %>
+
 </ol>
