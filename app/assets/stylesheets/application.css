@@ -36,6 +36,8 @@ body {
     font-size: 12px;
     font-weight: bold;
     position: fixed;
+    width: 100%;
+    margin: 0px;
   }
 
  .navbar a {
