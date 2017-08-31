@@ -2,7 +2,10 @@
 <ul>
   <li> Category: <%= @item.category.title.titleize %> </li>
   <li> Color: <%= @item.color %> </li>
-  <% if !@item.condition.nil? %>
+  <% if !@item.brand.empty? %>
+	  <li> Brand: <%= @item.brand.titleize %> </li>
+  <% end %>
+  <% if !@item.condition.empty? %>
 	  <li> Condition: <%= @item.condition %> </li>
   <% end %>
 </ul>
