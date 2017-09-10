@@ -1,5 +1,5 @@
 ## Capsule Wardrobe Manager
-With this application users can manage clothing in their closets and maintain outfits.
+With this application users can keep track of clothing and manage outfits.
 
 ### Installation
 Fork and clone the repository.  Run `bundle install`, `rake db:migrate`, and `rails s`.
