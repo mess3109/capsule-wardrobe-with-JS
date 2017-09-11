@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :seasons, :only => [:index, :show]
-  resources :categories, :only => [:index, :show]
+  # resources :seasons, :only => [:index, :show]
+  # resources :categories, :only => [:index, :show]
 
   resources :outfits do
   	resources :items, only: [:show]
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/items/least_used', to: 'items#least_used'
 
   resources :items do
-    resources :outfits, only: [:show, :index, :new, :create, :edit]
+    resources :outfits, only: [:show, :new, :create, :edit]
   end
 
   resources :item_outfits, only: [:create, :destroy]
