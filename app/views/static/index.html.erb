@@ -1,7 +1,7 @@
 <h3>Capsule Wardrobe Organizer</h3>
 
 <% if user_signed_in? %>
-	<%= link_to "Most used clothing items", items_most_used_path %> <p>
+	<%= link_to "Most used clothing items", '/items/used?order=most' %> <p>
 
-	<%= link_to "Least used clothing items", items_least_used_path, :most_or_least => "Least" %> 
+	<%= link_to "Least used clothing items", '/items/used?order=least' %> 
 <% end %>

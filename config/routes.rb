@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   	resources :items, only: [:show]
   end
 
-  get '/items/most_used', to: 'items#most_used'
-  get '/items/least_used', to: 'items#least_used'
+  get '/items/used', to: 'items#used_items'
 
   resources :items do
     resources :outfits, only: [:show, :new, :create, :edit]
