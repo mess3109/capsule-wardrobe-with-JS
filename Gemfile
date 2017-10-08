@@ -36,3 +36,4 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
+gem "paperclip"

@@ -1,21 +1,20 @@
-<%= form_for @item do |f| %>
-
- <%= f.label :title %>:<br>
- <%= f.text_field :title %><br>
- <%= f.label :color %>:<br>
- <%= f.text_field :color %><br>
- <%= f.label :brand %>:<br>
- <%= f.text_field :brand %><br>
- <%= f.label :condition %>:<br>
- <%= f.text_field :condition %><br>
- <%= f.label :image_url, "Image Url" %>:<br>
- <%= f.text_field :image_url %><br>
- <%= f.label :category %>:<br>
- <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
- <%= f.fields_for :category, @item.build_category do |category_fields| %><br>
- 	<%= category_fields.label :title, "Or create a new Category" %>:<br>
-    <%= category_fields.text_field :title %><br>
- <% end %>
-
- <%= f.submit %>
+<%= form_for @item, html: {multipart: true} do |f| %>
+<%= f.label :title %>:<br>
+<%= f.text_field :title %><br>
+<%= f.label :color %>:<br>
+<%= f.text_field :color %><br>
+<%= f.label :brand %>:<br>
+<%= f.text_field :brand %><br>
+<%= f.label :condition %>:<br>
+<%= f.text_field :condition %><br>
+<%= f.label :category %>:<br>
+<%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
+<%= f.fields_for :category, @item.build_category do |category_fields| %>
+<%= category_fields.label :title, "Or create a new Category" %>:<br>
+<%= category_fields.text_field :title %><br>
+<% end %>
+<%= f.label :image %>:<br>
+<%= f.file_field :image %><br>
+<br>
+<%= f.submit %>
 <% end %>
