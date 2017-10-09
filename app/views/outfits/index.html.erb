@@ -2,6 +2,6 @@
 
 <ul>
 <% current_user.outfits.sort_by { |outfit| outfit.season.title }.each do |outfit| %>
-	  <li> <%= link_to outfit.title, outfit_path(outfit) %> - <%= outfit.season.title %></li>
+	  <li> <%= outfit.season.title.titleize %> - <%= link_to outfit.title, outfit_path(outfit) %></li>
 <% end %>
 </ul>
