@@ -1,14 +1,18 @@
 class OutfitsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :outfit, :only => [:show, :edit, :update, :destroy]
-    before_action :check_user, :only => [:show, :edit, :update, :destroy]
-    before_action :seasons, :only => [:new, :create, :edit, :update]
-    before_action :item_outfit, :only => [:new, :create]
+	before_action :authenticate_user!
+	before_action :outfit, :only => [:show, :edit, :update, :destroy]
+	before_action :check_user, :only => [:show, :edit, :update, :destroy]
+	before_action :seasons, :only => [:new, :create, :edit, :update]
+	before_action :item_outfit, :only => [:new, :create]
 
 	def index
 	end
 
 	def show
+		respond_to do |format|
+			format.html { render :show }
+			format.json { render json: @outfit}
+		end
 	end
 
 	def new
@@ -18,7 +22,7 @@ class OutfitsController < ApplicationController
 	def create
 		@outfit = current_user.outfits.build(outfit_params)
 		if !params[:outfit][:item_outfit][:item_id].empty?
-		    @outfit.add_item(params[:outfit][:item_outfit][:item_id])
+			@outfit.add_item(params[:outfit][:item_outfit][:item_id])
 		end	
 		if @outfit.save
 			redirect_to outfit_path(@outfit)
@@ -41,7 +45,7 @@ class OutfitsController < ApplicationController
 
 	def destroy
 		@outfit.delete
-    	redirect_to outfits_path
+		redirect_to outfits_path
 	end
 
 	private
