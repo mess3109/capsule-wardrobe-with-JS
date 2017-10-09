@@ -5,10 +5,8 @@
 <%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit, :items => items_not_in_outfit(@outfit) } if has_items?(current_user) %>
 
 <p>
-<%= link_to "Edit", edit_outfit_path %> | 
-<%= link_to "Delete", { :controller => :outfits, :action => :destroy} , :method => :delete %> 
+	<%= link_to "Edit", edit_outfit_path %> | 
+	<%= link_to "Delete", { :controller => :outfits, :action => :destroy} , :method => :delete %> 
 </p>
 
-
-<a href="#" class="js-next" data-id="<%=@outfit.id%>">Next Outfit</a>
-
+<a href="#" class="js-next" data-id="<%= @outfit.id %>">Next Outfit</a>
