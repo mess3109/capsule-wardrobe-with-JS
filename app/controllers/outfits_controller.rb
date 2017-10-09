@@ -6,6 +6,11 @@ class OutfitsController < ApplicationController
 	before_action :item_outfit, :only => [:new, :create]
 
 	def index
+		@outfits = current_user.outfits.sort_by { |outfit| outfit.season.title }
+		respond_to do |format|
+			format.html { render :index }
+			format.json { render json: @outfits}
+		end
 	end
 
 	def show
