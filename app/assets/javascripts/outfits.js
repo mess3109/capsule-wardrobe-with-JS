@@ -17,12 +17,21 @@ $(document).ready(function () {
 		})
 	})
 
+	$('.delete_url').on("click",function(event) {
+		event.preventDefault();
+		alert('click')
+		console.log(this)
+		debugger
+		// $(`#${}`).remove();
+	})
+
 	$('form').submit(function(event) {
 		event.preventDefault();
 		var values = $(this).serialize();
 		$.post('/item_outfits', values).done(function (itemOutfit){
-			appendClothingItem(itemOutfit.item, itemOutfit.outfit)
-			$(`#${itemOutfit.item.id}`).remove()
+			$(`#${itemOutfit.item.id}`).remove();
+			appendClothingItem(itemOutfit.item, itemOutfit.outfit);
+
 		});
 
 	})
@@ -32,9 +41,9 @@ currentClothingItems(parseInt($("#outfit_id").attr("data-id")))
 }); 
 
 function appendClothingItem(item, outfit) {
-	$('.clothing-items').append(`<li>
+	$('.clothing-items').append(`<li id="${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
-		<a rel="nofollow" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+		<a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
 }
@@ -43,7 +52,7 @@ function currentClothingItems(outfit_id) {
 	$.get("/outfits/" + outfit_id + ".json", function(outfit) {
 		$(".title").text(outfit["title"]);
 		$(".season").text(outfit["season"]["title"]);
-		// $(".clothing-items").html("")
+		$(".clothing-items").html("")
 		outfit.items.forEach(function(item) {
 			appendClothingItem(item, outfit)
 		})
