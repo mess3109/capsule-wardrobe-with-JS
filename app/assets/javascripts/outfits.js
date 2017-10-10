@@ -2,16 +2,12 @@ $(function () {
 
 	$(".js-next").on("click", function() {
 		var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-		$.get("/outfits/" + nextId + ".json", function(data) {
-			$(".title").text(data["title"]);
-			$(".season").text(data["season"]["title"]);
+		$.get("/outfits/" + nextId + ".json", function(outfit) {
+			$(".title").text(outfit["title"]);
+			$(".season").text(outfit["season"]["title"]);
 			$(".clothing-items").html("")
-			data.items.forEach(function(item) {
-				$('.clothing-items').append(`<li>
-					<a href="/outfits/${data.id}/items/${item.id}">${item.title}</a> - 
-					<a rel="nofollow" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${data.id}">Remove from Outfit</a>
-					</li>
-					`)
+			outfit.items.forEach(function(item) {
+				appendClothingItem(item, outfit)
 			})
 			$(".js-next").attr("data-id", data["id"]);
 		});
@@ -29,6 +25,28 @@ $(function () {
 				)
 		})
 	})
+
+	$('form').submit(function(event) {
+		event.preventDefault();
+		var values = $(this).serialize();
+		$.post('/item_outfits', values).done(function (data){
+			console.log(data)
+			alert('click')
+			debugger
+
+			// appendClothingItem(item, outfit)
+		});
+
+	})
+
 }); 
+
+function appendClothingItem(item, outfit) {
+	$('.clothing-items').append(`<li>
+		<a href="/outfits/${outfit.id}/items/${item.id}">${outfittitle}</a> - 
+		<a rel="nofollow" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+		</li>
+		`)
+}
 
 

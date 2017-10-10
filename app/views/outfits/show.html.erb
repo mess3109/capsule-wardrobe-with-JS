@@ -2,7 +2,17 @@
 
 <%= render partial: 'items/remove_clothing', :locals => { :outfit => @outfit } if has_items?(@outfit) %>
 
-<%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit, :items => items_not_in_outfit(@outfit) } if has_items?(current_user) %>
+<p>Add clothing to outfit:</p>
+<ul id="add_clothing">
+	<% items_not_in_outfit(@outfit).each do |item| %>
+	<li> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <form>
+		<input type="hidden" name="item_id" value="<%=item.id%>">
+		<input type="hidden" name="outfit_id" value="<%=@outfit.id%>">
+		<input type="hidden" name="user_id" value="<%=current_user.id%>">
+		<input type="submit" value="Add Clothing item">
+	</form></li>
+	<% end %>
+</ul>
 
 <p>
 	<%= link_to "Edit", edit_outfit_path %> | 
