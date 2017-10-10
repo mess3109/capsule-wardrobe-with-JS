@@ -29,12 +29,12 @@ $(function () {
 	$('form').submit(function(event) {
 		event.preventDefault();
 		var values = $(this).serialize();
-		$.post('/item_outfits', values).done(function (data){
-			console.log(data)
-			alert('click')
-			debugger
+		$.post('/item_outfits', values).done(function (itemOutfit){
+			// console.log(itemOutfit)
+			// debugger
+			appendClothingItem(itemOutfit.item, itemOutfit.outfit)
 
-			// appendClothingItem(item, outfit)
+
 		});
 
 	})
@@ -43,7 +43,7 @@ $(function () {
 
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li>
-		<a href="/outfits/${outfit.id}/items/${item.id}">${outfittitle}</a> - 
+		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
 		<a rel="nofollow" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
