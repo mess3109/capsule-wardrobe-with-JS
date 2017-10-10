@@ -1,16 +1,7 @@
-$(function () {
-
+$(document).ready(function () {
 	$(".js-next").on("click", function() {
-		var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-		$.get("/outfits/" + nextId + ".json", function(outfit) {
-			$(".title").text(outfit["title"]);
-			$(".season").text(outfit["season"]["title"]);
-			$(".clothing-items").html("")
-			outfit.items.forEach(function(item) {
-				appendClothingItem(item, outfit)
-			})
-			$(".js-next").attr("data-id", data["id"]);
-		});
+		var nextId = parseInt($("#outfit_id").attr("data-id")) + 1;
+		currentClothingItems(nextId)
 	});
 
 	var user_id = parseInt($("#user_id").attr("data-id"))
@@ -30,14 +21,13 @@ $(function () {
 		event.preventDefault();
 		var values = $(this).serialize();
 		$.post('/item_outfits', values).done(function (itemOutfit){
-			// console.log(itemOutfit)
-			// debugger
 			appendClothingItem(itemOutfit.item, itemOutfit.outfit)
-
-
+			$(`#${itemOutfit.item.id}`).remove()
 		});
 
 	})
+//shows all clothing items in outfit on outfit show page
+currentClothingItems(parseInt($("#outfit_id").attr("data-id")))
 
 }); 
 
@@ -47,6 +37,19 @@ function appendClothingItem(item, outfit) {
 		<a rel="nofollow" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
+}
+
+function currentClothingItems(outfit_id) {
+	$.get("/outfits/" + outfit_id + ".json", function(outfit) {
+		$(".title").text(outfit["title"]);
+		$(".season").text(outfit["season"]["title"]);
+		// $(".clothing-items").html("")
+		outfit.items.forEach(function(item) {
+			appendClothingItem(item, outfit)
+		})
+		$("#outfit_id").attr("data-id", outfit["id"]);
+		$( "input[name='outfit_id']" ).val(outfit["id"])
+	});
 }
 
 

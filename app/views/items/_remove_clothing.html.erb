@@ -2,8 +2,6 @@
 
 <ul>
 	<div class="clothing-items">
-		<% outfit.items_sorted_by_category.each do |item| %>
-		<li> <%= link_to item.title.titleize, outfit_item_path(outfit, item) %> - <%= item.category.title.titleize %> - <%= link_to "Remove from Outfit", { :controller => :item_outfits, :action => :destroy, :item => item, :outfit => @outfit }, :method => :delete %></li>
-		<% end %>
+
 	</div>
 </ul>

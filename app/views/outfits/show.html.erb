@@ -1,11 +1,13 @@
 <%= render partial: 'outfit', :locals => { :outfit => @outfit } %>
 
+<input id="outfit_id" data-id="<%=@outfit.id%>" type="hidden" />
+
 <%= render partial: 'items/remove_clothing', :locals => { :outfit => @outfit } if has_items?(@outfit) %>
 
 <p>Add clothing to outfit:</p>
 <ul id="add_clothing">
 	<% items_not_in_outfit(@outfit).each do |item| %>
-	<li> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <form>
+	<li id="<%=item.id%>"> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <form>
 		<input type="hidden" name="item_id" value="<%=item.id%>">
 		<input type="hidden" name="outfit_id" value="<%=@outfit.id%>">
 		<input type="hidden" name="user_id" value="<%=current_user.id%>">
@@ -19,4 +21,4 @@
 	<%= link_to "Delete", { :controller => :outfits, :action => :destroy} , :method => :delete %> 
 </p>
 
-<a href="#" class="js-next" data-id="<%= @outfit.id %>">Next Outfit</a>
+<a href="#" class="js-next">Next Outfit</a>
