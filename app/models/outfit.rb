@@ -6,7 +6,6 @@ class Outfit < ApplicationRecord
 
 	validates :title, :presence => true
 	validates :season_id, :presence => true
-	validates :outfit_type, :presence => true
 
 	def season_attributes=(season)
 		if self.season_id.nil?
