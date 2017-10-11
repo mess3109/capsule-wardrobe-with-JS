@@ -26,3 +26,17 @@
 </p>
 
 <a href="#" class="js-next">Next Outfit</a>
+
+<script type="text/javascript">
+	$(function(){
+		$('form').submit(function(event) {
+			event.preventDefault();
+			var values = $(this).serialize();
+			$.post('/item_outfits', values).done(function (itemOutfit){
+				$(`#${itemOutfit.item.id}`).remove();
+				appendClothingItem(itemOutfit.item, itemOutfit.outfit);
+
+			});
+		})
+	})
+</script>

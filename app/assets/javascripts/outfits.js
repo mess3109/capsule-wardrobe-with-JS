@@ -25,16 +25,6 @@ $(document).ready(function () {
 		// $(`#${}`).remove();
 	})
 
-	$('form').submit(function(event) {
-		event.preventDefault();
-		var values = $(this).serialize();
-		$.post('/item_outfits', values).done(function (itemOutfit){
-			$(`#${itemOutfit.item.id}`).remove();
-			appendClothingItem(itemOutfit.item, itemOutfit.outfit);
-
-		});
-
-	})
 //shows all clothing items in outfit on outfit show page
 currentClothingItems(parseInt($("#outfit_id").attr("data-id")))
 
@@ -60,5 +50,7 @@ function currentClothingItems(outfit_id) {
 		$( "input[name='outfit_id']" ).val(outfit["id"])
 	});
 }
+
+
 
 
