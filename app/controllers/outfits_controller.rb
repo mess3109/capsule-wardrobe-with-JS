@@ -9,16 +9,24 @@ class OutfitsController < ApplicationController
 		@outfits = current_user.outfits.sort_by { |outfit| outfit.season.title }
 		respond_to do |format|
 			format.html { render :index }
-			format.json { render json: @outfits}
+			format.json { render json: @outfits }
 		end
 	end
 
 	def show
 		respond_to do |format|
 			format.html { render :show }
-			format.json { render json: @outfit}
+			format.json { render json: @outfit.to_json( :only => [:id, :title], 
+				include: [ { items:
+					{ :only => [:id, :title],  
+						:include => [:category => { only: [:id, :title] }]}}, 
+						{ :season => { :only => [:id, :title] }}])}
 		end
 	end
+
+
+	# { render json: @post.to_json(only: [:title, :description, :id],
+	# 	include: [author: { only: [:name]}]) }
 
 	def new
 		@outfit = Outfit.new
