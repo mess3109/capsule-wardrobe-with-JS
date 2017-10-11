@@ -17,14 +17,6 @@ $(document).ready(function () {
 		})
 	})
 
-	$('.delete_url').on("click",function(event) {
-		event.preventDefault();
-		alert('click')
-		console.log(this)
-		debugger
-		// $(`#${}`).remove();
-	})
-
 //shows all clothing items in outfit on outfit show page
 currentClothingItems(parseInt($("#outfit_id").attr("data-id")))
 
