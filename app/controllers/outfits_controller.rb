@@ -1,6 +1,6 @@
 class OutfitsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :outfit, :only => [:show, :edit, :update, :destroy]
+	before_action :outfit, :only => [:show, :edit, :update, :destroy, :items_not_used]
 	before_action :check_user, :only => [:show, :edit, :update, :destroy]
 	before_action :seasons, :only => [:new, :create, :edit, :update]
 	before_action :item_outfit, :only => [:new, :create]
@@ -51,6 +51,11 @@ class OutfitsController < ApplicationController
 	def destroy
 		@outfit.delete
 		redirect_to outfits_path
+	end
+
+	def items_not_used
+		@items = (current_user.items - @outfit.items).sort_by { |item| item.category.title }
+		render json: @items
 	end
 
 	private

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   	resources :items, only: [:show]
   end
 
+  get '/outfits/:id/items_not_used', to: 'outfits#items_not_used'
+
   get '/items/used', to: 'items#used_items'
 
   resources :items do
