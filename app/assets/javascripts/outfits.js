@@ -2,6 +2,7 @@ $(document).ready(function () {
 	$(".js-next").on("click", function() {
 		var nextId = parseInt($("#outfit_id").attr("data-id")) + 1;
 		currentClothingItems(nextId)
+		showItemsNotUsed(nextId)
 	});
 
 	var user_id = parseInt($("#user_id").attr("data-id"))
@@ -21,12 +22,13 @@ $(document).ready(function () {
 let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 currentClothingItems(outfit_id)
 showItemsNotUsed(outfit_id)
+
 }); 
 
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li id="item-${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
-		<a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/1?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+		<a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
 }
@@ -45,7 +47,7 @@ function currentClothingItems(outfit_id) {
 }
 
 function showItemsNotUsed(outfit_id) {
-	$("#items_not_in_outfit").empty();
+	$("#items_not_in_outfit").html("");
 	$.get("/outfits/" + outfit_id + "/items_not_used.json", function(items) {
 		items.forEach(function(item) {
 			$("#items_not_in_outfit").append(`
