@@ -16,7 +16,8 @@ class OutfitsController < ApplicationController
 	def show
 		respond_to do |format|
 			format.html { render :show }
-			format.json { render json: @outfit.to_json( :only => [:id, :title], 
+			format.json { render json: @outfit.to_json( 
+				:only => [:id, :title], 
 				include: [ { items:
 					{ :only => [:id, :title],  
 						:include => [:category => { only: [:id, :title] }]}}, 

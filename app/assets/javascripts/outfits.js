@@ -18,28 +18,26 @@ $(document).ready(function () {
 		})
 	})
 
-//shows all clothing items in outfit on outfit show page
-let outfit_id = parseInt($("#outfit_id").attr("data-id"))
+	//shows all clothing items in outfit on outfit show page
+	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
+	currentClothingItems(outfit_id)
+	showItemsNotUsed(outfit_id)
 
-currentClothingItems(outfit_id)
-showItemsNotUsed(outfit_id)
-
-$(".delete-url").on('click', function(event) {
-	event.preventDefault();
-	alert($(this))
-	console.log($(this))
-})
+	$(".delete-url").on('click', function(event) {
+		event.preventDefault();
+		alert($(this))
+		console.log($(this))
+	})
 
 }); 
 
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li id="item-${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
-		<a class="delete-url" href="#">Remove from Outfit</a>
+		<a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
 }
-// <a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 
 function currentClothingItems(outfit_id) {
 	$.get("/outfits/" + outfit_id + ".json", function(outfit) {
@@ -60,7 +58,7 @@ function showItemsNotUsed(outfit_id) {
 		items.forEach(function(item) {
 			$("#items_not_in_outfit").append(`
 				<li id="item-${item.id}"> 
-				<a href="/items/${item.id}">${item.title} </a> - ${item.season} - 
+				<a href="/items/${item.id}">${item.title} </a> - ${item.category.title} - 
 				<form>
 				<input type="hidden" name="item_id" value="${item.id}">
 				<input type="hidden" name="outfit_id" value="${outfit_id}">
@@ -68,6 +66,7 @@ function showItemsNotUsed(outfit_id) {
 				</form></li>
 				`)
 		})
+
 		//adds event listener to add clothing item to outfit via post request
 		$('form').submit(function(event) {
 			event.preventDefault();
