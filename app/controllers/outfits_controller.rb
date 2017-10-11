@@ -24,10 +24,6 @@ class OutfitsController < ApplicationController
 		end
 	end
 
-
-	# { render json: @post.to_json(only: [:title, :description, :id],
-	# 	include: [author: { only: [:name]}]) }
-
 	def new
 		@outfit = Outfit.new
 	end
