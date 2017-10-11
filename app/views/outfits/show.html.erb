@@ -10,14 +10,8 @@
 </ul>
 
 <p>Add clothing to outfit:</p>
-<ul id="add_clothing">
-	<% items_not_in_outfit(@outfit).each do |item| %>
-	<li id="<%=item.id%>"> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <form>
-		<input type="hidden" name="item_id" value="<%=item.id%>">
-		<input type="hidden" name="outfit_id" value="<%=@outfit.id%>">
-		<input type="submit" value="Add Clothing item">
-	</form></li>
-	<% end %>
+<ul id="items_not_in_outfit">
+
 </ul>
 
 <p>
@@ -27,16 +21,3 @@
 
 <a href="#" class="js-next">Next Outfit</a>
 
-<script type="text/javascript">
-	$(function(){
-		$('form').submit(function(event) {
-			event.preventDefault();
-			var values = $(this).serialize();
-			$.post('/item_outfits', values).done(function (itemOutfit){
-				$(`#${itemOutfit.item.id}`).remove();
-				appendClothingItem(itemOutfit.item, itemOutfit.outfit);
-
-			});
-		})
-	})
-</script>

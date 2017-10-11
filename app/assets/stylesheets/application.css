@@ -62,3 +62,7 @@ a:hover {
 a:active {
     color: gray;
 }
+
+#items_not_in_outfit form {
+  display: inline;
+}
