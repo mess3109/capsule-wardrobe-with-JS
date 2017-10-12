@@ -1,13 +1,20 @@
 class ItemsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :current_item, :only => [:show, :edit, :update, :destroy]
-    before_action :check_user, :only => [:show, :edit, :update, :destroy]
-    before_action :categories, :only => [:new, :create, :edit, :update]
+	before_action :authenticate_user!
+	before_action :current_item, :only => [:show, :edit, :update, :destroy]
+	before_action :check_user, :only => [:show, :edit, :update, :destroy]
+	before_action :categories, :only => [:new, :create, :edit, :update]
 
 	def index
 	end
 
 	def show
+		respond_to do |format|
+			format.html { render :show }
+			format.json { render json: @item.to_json( 
+				:only => [:id, :title],
+				:include => [:category => { :only => [:id, :title] }]
+				)}
+		end
 	end
 
 	def new
@@ -37,7 +44,7 @@ class ItemsController < ApplicationController
 
 	def destroy
 		@item.delete
-    	redirect_to items_path
+		redirect_to items_path
 	end
 
 	def most_used
