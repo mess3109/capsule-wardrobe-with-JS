@@ -5,12 +5,13 @@ $(document).ready(function () {
 		showItemsNotUsed(nextId)
 	});
 
+	//get request of outfits for index page
 	var user_id = parseInt($("#user_id").attr("data-id"))
 	$.get('/users/' + user_id + '/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
-			outfit1 = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
-			$(".outfits").append(outfit1.createOutfitLink())
+			outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
+			$(".outfits").append(outfit.createOutfitLink())
 		})
 	})
 
@@ -19,6 +20,7 @@ $(document).ready(function () {
 	currentClothingItems(outfit_id)
 	showItemsNotUsed(outfit_id)
 
+	//for ajax delete request ***Not Working***
 	$(".delete-url").on('click', function(event) {
 		event.preventDefault();
 		alert($(this))
@@ -27,6 +29,7 @@ $(document).ready(function () {
 
 }); 
 
+//adds clothing item to list of clothing items for given outfit
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li id="item-${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
@@ -35,6 +38,7 @@ function appendClothingItem(item, outfit) {
 		`)
 }
 
+//get request for clothing items in a given outfit
 function currentClothingItems(outfit_id) {
 	$.get("/outfits/" + outfit_id + ".json", function(outfit) {
 		$(".title").text(outfit["title"]);
@@ -76,7 +80,7 @@ function showItemsNotUsed(outfit_id) {
 	});
 }
 
-
+//JS model object
 function Outfit(id, title, season, items) {
 	this.id = id
 	this.title = title
