@@ -20,22 +20,19 @@ $(document).ready(function () {
 	currentClothingItems(outfit_id)
 	showItemsNotUsed(outfit_id)
 
-	//for ajax delete request ***Not Working***
-	$(".delete-url").on('click', function(event) {
-		event.preventDefault();
-		alert($(this))
-		console.log($(this))
-	})
-
 }); 
 
 //adds clothing item to list of clothing items for given outfit
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li id="item-${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
-		<a rel="nofollow" class="delete_url" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+		<a rel="nofollow" class="delete-url" id="item-${item.id}" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
 		</li>
 		`)
+	$(".delete-url").on('click', function(event) {
+		$(`#${this.id}`).remove();
+
+	})
 }
 
 //get request for clothing items in a given outfit
