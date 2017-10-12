@@ -9,12 +9,8 @@ $(document).ready(function () {
 	$.get('/users/' + user_id + '/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
-			$(".outfits").append(
-				`<li> 
-				${outfit.season.title} - 
-				<a href="/outfits/${outfit.id}">${outfit.title}</a>
-				</li>`
-				)
+			outfit1 = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
+			$(".outfits").append(outfit1.createOutfitLink())
 		})
 	})
 
@@ -71,7 +67,7 @@ function showItemsNotUsed(outfit_id) {
 		$('form').submit(function(event) {
 			event.preventDefault();
 			var values = $(this).serialize();
-			$.post('/item_outfits', values).done(function (itemOutfit){
+			$.post('/item_outfits', values).done(function (itemOutfit) {
 				$(`#item-${itemOutfit.item.id}`).remove();
 				appendClothingItem(itemOutfit.item, itemOutfit.outfit);
 
@@ -80,4 +76,19 @@ function showItemsNotUsed(outfit_id) {
 	});
 }
 
+
+function Outfit(id, title, season, items) {
+	this.id = id
+	this.title = title
+	this.season = season
+	this.items = items
+}
+
+Outfit.prototype.createOutfitLink = function() {
+	let outfitLink = `<li> 
+	${this.season.title} - 
+	<a href="/outfits/${this.id}">${this.title}</a>
+	</li>`
+	return outfitLink
+}
 
