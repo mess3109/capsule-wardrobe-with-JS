@@ -8,9 +8,11 @@ body {
 }
 
 .main {
-  padding-top: 20px;
+  padding-top: 50px;
   padding-bottom: 10px;
   padding-left: 10px;
+  padding-right: 10px;
+  margin: 10;
 }
 
 /*.field_with_errors label {
@@ -21,48 +23,64 @@ body {
   border: 2px solid red;
   display: block;
   clear: both;
-}*/
+  }*/
 
 .error_messages {
   color: red;
 }
 
 .navbar {
-    border-bottom: 1px solid black;
-    text-align: left;
-    background: #555;
-    padding: 5px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    position: fixed;
-    width: 100%;
-    margin: 0px;
-  }
+  border-bottom: 1px solid black;
+  text-align: left;
+  background: #555;
+  padding: 5px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
+  margin: 0px;
+}
 
- .navbar a {
-    color: #ccc;
-    text-decoration: none;
+.navbar a {
+  color: #ccc;
+  text-decoration: none;
 }
 
 
- /* links*/
+/* links*/
 
 .main a {
-    color: gray;
-    text-decoration: none;
+  color: gray;
+  text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-    color: black;
+  color: black;
 }
 
 /* selected link */
 a:active {
-    color: gray;
+  color: gray;
 }
 
 #items_not_in_outfit form {
   display: inline;
+}
+
+h4 {
+  text-align: center;
+}
+
+
+.container{
+  display: flex;
+}
+.fixed{
+  width: 50%;
+}
+.flex-item{
+  width: 50%;
+  /*flex-grow: 1;*/
 }
