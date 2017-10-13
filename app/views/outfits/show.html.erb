@@ -1,6 +1,5 @@
 <input id="outfit_id" data-id="<%=@outfit.id%>" type="hidden" />
 
-
 <div class="container">
 	<div class="fixed">
 		<%= render partial: 'outfit', :locals => { :outfit => @outfit } %>
@@ -12,6 +11,7 @@
 	</div>
 
 	<div class="flex-item">
+		<h4>Add clothing to outfit</h4>
 		<div id="items_not_in_outfit">
 			<%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit, :items => items_not_in_outfit(@outfit) } if has_items?(current_user) %>
 		</div>
