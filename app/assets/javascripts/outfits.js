@@ -19,6 +19,7 @@ $(document).ready(function () {
 		})
 	});
 
+	//creates outfit preview on index page
 	$(document).on('click', '.outfit-show', function(e){
 		e.preventDefault()
 		let id = $(this).attr("data-id")
@@ -44,8 +45,6 @@ $(document).ready(function () {
 
 	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 	
-	// currentClothingItems(outfit_id)
-	// showItemsNotUsed(outfit_id)
 
 }); 
 
@@ -103,7 +102,7 @@ function appendClothingItemNotUsed(item_id, outfit) {
 					<form>
 					<input type="hidden" name="item_id" value="${item.id}">
 					<input type="hidden" name="outfit_id" value="${outfit_id}">
-					<input type="submit" value="Add Clothing item">
+					<input type="submit" value="Add">
 					</form></li>
 					`)
 			})
