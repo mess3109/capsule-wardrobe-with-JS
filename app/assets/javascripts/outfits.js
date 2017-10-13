@@ -1,9 +1,22 @@
 $(document).ready(function () {
+
 	$(".js-next").on("click", function() {
 		var nextId = parseInt($("#outfit_id").attr("data-id")) + 1;
 		currentClothingItems(nextId)
 		showItemsNotUsed(nextId)
 	});
+
+	$(document).on('click', '.outfit-show', function(e){
+		
+		e.preventDefault()
+		let id = $(this).attr("data-id")
+		console.log(id)
+		$.get(`/outfits/${id}.json`)
+			.done(function(outfit) {
+				$('.main').append(`${outfit.title}`)
+			})
+
+	})
 
 	//get request of outfits for index page
 	var user_id = parseInt($("#user_id").attr("data-id"))
@@ -17,10 +30,6 @@ $(document).ready(function () {
 
 	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 	
-
-	$.get('/outfits/' + outfit_id + '.json', function(data) {
-		outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
-	})
 
 	currentClothingItems(outfit_id)
 	showItemsNotUsed(outfit_id)
@@ -87,7 +96,7 @@ function appendClothingItemNotUsed(item_id, outfit) {
 			})
 
 		//adds event listener to add clothing item to outfit via post request
-		$('form').submit(function(event) {
+		$(document).on('submit', 'form',  function(event) {
 			event.preventDefault();
 			var values = $(this).serialize();
 			$.post('/item_outfits', values).done(function (itemOutfit) {
@@ -110,8 +119,9 @@ function Outfit(id, title, season, items) {
 Outfit.prototype.createOutfitLink = function() {
 	let outfitLink = `<li> 
 	${this.season.title} - 
-	<a href="/outfits/${this.id}">${this.title}</a>
+	<a class="outfit-show" data-id="${this.id}" href="/outfits/${this.id}">${this.title}</a>
 	</li>`
 	return outfitLink
 }
+
 

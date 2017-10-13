@@ -47,15 +47,16 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 
-	def most_used
-		@most_or_least_used = Item.most_used_items.by_user(current_user).limit(5)
-		@most_or_least = "Most"
-		render 'most_used'
-	end
-
-	def least_used
-		@most_or_least_used = Item.least_used_items.by_user(current_user).limit(5)
-		@most_or_least = "Least"
+	def used_items
+		if params["order"] == "most"
+			@most_or_least_used = Item.most_used_items.by_user(current_user).limit(5)
+			@most_or_least = "Most"
+		elsif params["order"] == "least"
+			@most_or_least_used = Item.least_used_items.by_user(current_user).limit(5)
+			@most_or_least = "Least"
+		else
+			redirect_to items_path
+		end
 		render 'most_used'
 	end
 
