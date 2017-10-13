@@ -96,16 +96,7 @@ function appendClothingItemNotUsed(item_id, outfit_id) {
 		$(".items-not-in-outfit").html("");
 		$.get("/outfits/" + outfit_id + "/items_not_used.json", function(items) {
 			items.forEach(function(item) {
-				item = new Item(id, title, category, outfits)
-				// $(".items-not-in-outfit").append(`
-				// 	<li id="item-${item.id}"> 
-				// 	<a href="/items/${item.id}">${item.title} </a> - ${item.category.title} - 
-				// 	<form>
-				// 	<input type="hidden" name="item_id" value="${item.id}">
-				// 	<input type="hidden" name="outfit_id" value="${outfit_id}">
-				// 	<input type="submit" value="Add" class="button">
-				// 	</form></li>
-				// 	`)
+				item = new Item(item.id, item.title, item.category, item.outfits)
 				$(".items-not-in-outfit").append(item.AddClothingItemLink(outfit_id))
 			})
 		});
