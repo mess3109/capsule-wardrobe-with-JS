@@ -65,14 +65,11 @@ $(document).ready(function () {
 function appendClothingItem(item, outfit) {
 	$('.clothing-items').append(`<li id="item-${item.id}">
 		<a href="/outfits/${outfit.id}/items/${item.id}">${item.title}</a> - 
-		<a rel="nofollow" class="delete-url" data-id="${item.id}" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+		<a rel="nofollow" class="delete-url" data-id="${item.id}" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove</a>
 		</li>
 		`)
-	// $(".delete-url").on('click', function(event) {
-	// 	$(`#${this.id}`).remove();
-	// 	appendClothingItemNotUsed(parseInt($(this).attr("data-id")), outfit)
-	// })
 }
+
 
 function appendClothingItemNotUsed(item_id, outfit_id) {
 	$.get('/items/' + item_id + '.json', function(item) {
@@ -83,7 +80,7 @@ function appendClothingItemNotUsed(item_id, outfit_id) {
 			<form>
 			<input type="hidden" name="item_id" value="${item.id}">
 			<input type="hidden" name="outfit_id" value="${outfit_id}">
-			<input type="submit" value="Add Clothing item">
+			<input type="submit" value="Add" class="buttonf">
 			</form></li>
 			`)
 	})
@@ -115,21 +112,11 @@ function appendClothingItemNotUsed(item_id, outfit_id) {
 					<form>
 					<input type="hidden" name="item_id" value="${item.id}">
 					<input type="hidden" name="outfit_id" value="${outfit_id}">
-					<input type="submit" value="Add">
+					<input type="submit" value="Add" class="button">
 					</form></li>
 					`)
 			})
-
-		//adds event listener to add clothing item to outfit via post request
-		// $(document).on('submit', '#items_not_in_outfit form',  function(event) {
-		// 	event.preventDefault();
-		// 	var values = $(this).serialize();
-		// 	$.post('/item_outfits', values).done(function (itemOutfit) {
-		// 		$(`#item-${itemOutfit.item.id}`).remove();
-		// 		appendClothingItem(itemOutfit.item, itemOutfit.outfit);
-		// 	});
-		// })
-	});
+		});
 	}
 
 //JS model object
