@@ -7,15 +7,18 @@ $(document).ready(function () {
 	});
 
 	$(document).on('click', '.outfit-show', function(e){
-		
 		e.preventDefault()
 		let id = $(this).attr("data-id")
-		console.log(id)
 		$.get(`/outfits/${id}.json`)
-			.done(function(outfit) {
-				$('.main').append(`${outfit.title}`)
+		.done(function(outfit) {
+			$('.outfit-show-spec').empty()
+			$('.outfit-show-spec').append(`<h4>${outfit.title}</h4>`)
+			console.log(outfit.items)
+			outfit.items.forEach(function(item) {
+				$('.outfit-show-spec').append(`${item.title}<br>`)
 			})
-
+			$('.outfit-show-spec').append(`<p><a href="/outfits/${outfit.id}">See more detail...</a></p>`)
+		})
 	})
 
 	//get request of outfits for index page
@@ -31,8 +34,8 @@ $(document).ready(function () {
 	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 	
 
-	currentClothingItems(outfit_id)
-	showItemsNotUsed(outfit_id)
+	// currentClothingItems(outfit_id)
+	// showItemsNotUsed(outfit_id)
 
 }); 
 
