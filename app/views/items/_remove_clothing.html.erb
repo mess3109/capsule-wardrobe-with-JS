@@ -1,8 +1,8 @@
 <% outfit.items_sorted_by_category.each do |item| %>
 <li id="item-<%= item.id %>" >
 	<%= link_to item.title.titleize, outfit_item_path(outfit, item) %> - <%= item.category.title.titleize %> - 
-	<%= link_to "Remove from Outfit", 
-	{ :controller => :item_outfits, :action => :destroy, :item => item, :outfit => @outfit }, 
+	<%= link_to "Remove", 
+	{ :controller => :item_outfits, :action => :destroy, :item => item, :outfit => outfit }, 
 	:method => :delete, :class => 'delete-url', 
 	:'data-id' => item.id %></li>
 <% end %>

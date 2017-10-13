@@ -4,7 +4,7 @@
 	<%= form_tag do %>
 	<%= hidden_field_tag :item_id, item.id %>
 	<%= hidden_field_tag :outfit_id, outfit.id %>
-	<%= submit_tag("Add") %>
+	<%= submit_tag "Add", :class => 'button' %>
 	<% end %>
 </li>
 <% end %>
