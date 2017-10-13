@@ -1,14 +1,12 @@
-<ul>
-	<% items.each do |item| %>
-	<li> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - <%= link_to 'Add to Outfit', :class => {:controller => :item_outfits, :action => :create, :item_id => item.id, :outfit_id => outfit.id}, :method => :post %>
-		
-		<%= form_tag do %>
-		<%= hidden_field_tag :item_id, item.id %>
-		<%= hidden_field_tag :outfit_id, outfit.id, {:id => `form-#{item.id}`} %>
-		<%= submit_tag("Add") %>
-		<% end %>
 
-	</li>
+<% items.each do |item| %>
+<li id="item-<%= item.id %>"> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - 		
+	<%= form_tag do %>
+	<%= hidden_field_tag :item_id, item.id %>
+	<%= hidden_field_tag :outfit_id, outfit.id %>
+	<%= submit_tag("Add") %>
 	<% end %>
-</ul>
+</li>
+<% end %>
+
 
