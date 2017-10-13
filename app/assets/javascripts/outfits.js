@@ -1,9 +1,22 @@
 $(document).ready(function () {
+	let user_id = parseInt($("#user_id").attr("data-id"))
 
 	$(".js-next").on("click", function() {
-		var nextId = parseInt($("#outfit_id").attr("data-id")) + 1;
-		currentClothingItems(nextId)
-		showItemsNotUsed(nextId)
+		let outfit_id = parseInt($("#outfit_id").attr("data-id"))
+		$.get('/users/' + user_id + '/outfits.json', function(data) {
+			data.sort(function(a,b) {return a.id - b.id});
+			console.log(data)
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].id === outfit_id) {
+					let nextId = data[i + 1].id;
+					currentClothingItems(nextId)
+					showItemsNotUsed(nextId)
+				}  else if (data[data.length-1].id === outfit_id){
+					alert('No more outfits!')
+					break;
+				}
+			}
+		})
 	});
 
 	$(document).on('click', '.outfit-show', function(e){
@@ -13,7 +26,6 @@ $(document).ready(function () {
 		.done(function(outfit) {
 			$('.outfit-show-spec').empty()
 			$('.outfit-show-spec').append(`<h4>${outfit.title}</h4>`)
-			console.log(outfit.items)
 			outfit.items.forEach(function(item) {
 				$('.outfit-show-spec').append(`${item.title}<br>`)
 			})
@@ -22,7 +34,6 @@ $(document).ready(function () {
 	})
 
 	//get request of outfits for index page
-	var user_id = parseInt($("#user_id").attr("data-id"))
 	$.get('/users/' + user_id + '/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
@@ -33,7 +44,6 @@ $(document).ready(function () {
 
 	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 	
-
 	// currentClothingItems(outfit_id)
 	// showItemsNotUsed(outfit_id)
 
@@ -105,7 +115,6 @@ function appendClothingItemNotUsed(item_id, outfit) {
 			$.post('/item_outfits', values).done(function (itemOutfit) {
 				$(`#item-${itemOutfit.item.id}`).remove();
 				appendClothingItem(itemOutfit.item, itemOutfit.outfit);
-
 			});
 		})
 	});
