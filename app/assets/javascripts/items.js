@@ -9,12 +9,11 @@ function Item(id, title, category, outfits) {
 Item.prototype.RemoveClothingItemLink = function(outfit_id) {
 	let link = `<li id="item-${this.id}">
 	<a href="/outfits/${outfit_id}/items/${this.id}">${this.title}</a> - 
-	<a rel="nofollow" class="delete-url" data-id="${this.id}" id="item-${this.id}" data-method="delete" href="/item_outfits/${outfit.id}?item=${item.id}&amp;outfit=${outfit.id}">Remove from Outfit</a>
+	<a rel="nofollow" class="delete-url" data-id="${this.id}" data-method="delete" href="/item_outfits/${outfit_id}?item=${this.id}&amp;outfit=${outfit_id}">Remove</a>
 	</li>
 	`
 	return link
 }
-
 
 Item.prototype.AddClothingItemLink = function(outfit_id) {
 	let link = `<li id="item-${this.id}"> 
