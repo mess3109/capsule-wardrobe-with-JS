@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :categories, :only => [:index, :show]
 
   resources :users do
-    resources :outfits
+    resources :outfits, only: [:index]
   end
 
   resources :outfits do
