@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   # resources :seasons, :only => [:index, :show]
   # resources :categories, :only => [:index, :show]
 
-  resources :users do
-    resources :outfits, only: [:index]
-  end
-
   resources :outfits do
   	resources :items, only: [:show]
   end

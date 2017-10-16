@@ -35,7 +35,7 @@ $(document).ready(function () {
 	})
 
 	//get request of outfits for index page
-	$.get('/users/' + user_id + '/outfits.json', function(data) {
+	$.get('/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
 			outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
