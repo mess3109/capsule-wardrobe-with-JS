@@ -35,6 +35,7 @@ $(document).ready(function () {
 	})
 
 	//get request of outfits for index page
+
 	$.get('/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
 	})
 
 	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
-	
+
 	//adds event listener to shift clothing item after delete request goes through the controller
 	$(document).on('click', '.delete-url', function(event) {
 		$(`#item-${parseInt($(this).attr("data-id"))}`).remove();
