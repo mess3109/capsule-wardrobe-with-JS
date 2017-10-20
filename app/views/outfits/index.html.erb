@@ -1,8 +1,15 @@
 <div class="container">
 	<div class="fixed">
 		<h4>All Outfits</h4>
-		<ul class="outfits">
+		<%= form_tag("/outfits", method: "get", class: "pick") do %>
+		<%= select_tag "season", options_from_collection_for_select(@seasons, "id", "title"), include_blank: true %>
+		<%= submit_tag "Pick a Season" %>
+		<% end %>
 
+		<ul class="outfits">
+			<% @outfits.each do |outfit| %>
+			<li> <%= link_to outfit.title, outfit_path(outfit) %> - <%= outfit.season.title %></li>
+			<% end %>
 		</ul>
 
 	</div>
