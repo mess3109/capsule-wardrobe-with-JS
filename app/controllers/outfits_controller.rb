@@ -2,11 +2,14 @@ class OutfitsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :outfit, :only => [:show, :edit, :update, :destroy, :items_not_used]
 	before_action :check_user, :only => [:show, :edit, :update, :destroy]
-	before_action :seasons, :only => [:new, :create, :edit, :update]
+	before_action :seasons, :only => [:new, :create, :edit, :update, :index]
 	before_action :item_outfit, :only => [:new, :create]
 
 	def index
 		@outfits = current_user.outfits.sort_by { |outfit| outfit.season.title }
+		if !params[:season].blank?
+			@outfits = Outfit.by_season(params[:season])
+		end
 		respond_to do |format|
 			format.html { render :index }
 			format.json { render json: @outfits.to_json(:only => [:id, :title],
