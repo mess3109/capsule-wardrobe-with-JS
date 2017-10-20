@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="fixed">
 		<h4>All Outfits</h4>
-		<%= form_tag("/outfits", method: "get", class: "pick") do %>
+		<%= form_tag("/outfits", method: "get") do %>
 		<%= select_tag "season", options_from_collection_for_select(@seasons, "id", "title"), include_blank: true %>
-		<%= submit_tag "Pick a Season" %>
+		<%= submit_tag "Pick a Season" , class: "pick"%>
 		<% end %>
 
 		<ul class="outfits">

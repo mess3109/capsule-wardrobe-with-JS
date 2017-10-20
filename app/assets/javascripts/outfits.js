@@ -35,16 +35,29 @@ $(document).ready(function () {
 	})
 
 	//get request of outfits for index page
-
 	$.get('/outfits.json', function(data) {
+
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
 			outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
 			$(".outfits").append(outfit.createOutfitLink())
 		})
+
+		$('.pick').on('click', function(e){
+			alert('click')
+			e.preventDefault()
+			$.get('/outfits.json', function(data) {
+				$(".outfits").empty();
+				data.forEach(function(outfit) {
+					outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
+					$(".outfits").append(outfit.createOutfitLink())
+				})
+			})
+
+		})
 	})
 
-	let outfit_id = parseInt($("#outfit_id").attr("data-id"))
+		let outfit_id = parseInt($("#outfit_id").attr("data-id"))
 
 	//adds event listener to shift clothing item after delete request goes through the controller
 	$(document).on('click', '.delete-url', function(event) {
