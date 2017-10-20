@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 	$(".js-next").on("click", function() {
 		let outfit_id = parseInt($("#outfit_id").attr("data-id"))
-		$.get('/users/' + user_id + '/outfits.json', function(data) {
+		$.get('/outfits.json', function(data) {
 			data.sort(function(a,b) {return a.id - b.id});
 			for (var i = 0; i < data.length; i++) {
 				if (data[i].id === outfit_id) {
