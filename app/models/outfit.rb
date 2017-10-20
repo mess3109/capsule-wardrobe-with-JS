@@ -9,18 +9,22 @@ class Outfit < ApplicationRecord
 
 	def season_attributes=(season)
 		if self.season_id.nil?
-		    self.season = Season.find_or_create_by(title: season["title"])
+			self.season = Season.find_or_create_by(title: season["title"])
 		end
 	end
 
 	def add_item(item_id)
-	    item_outfit = self.item_outfits.build(item_id: item_id, user: self.user)
-	    item_outfit.save
-	    item_outfit
+		item_outfit = self.item_outfits.build(item_id: item_id, user: self.user)
+		item_outfit.save
+		item_outfit
 	end
 
 	def items_sorted_by_category
-  		self.items.sort_by { |item| item.category.title }
-  	end
+		self.items.sort_by { |item| item.category.title }
+	end
+
+	def self.by_season(season_id)
+		where(season: season_id)
+	end
 
 end
