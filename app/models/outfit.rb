@@ -27,4 +27,8 @@ class Outfit < ApplicationRecord
 		where(season: season_id)
 	end
 
+	def self.by_user(user)
+		where(:user_id => user.id)
+	end
+
 end
