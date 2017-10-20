@@ -64,8 +64,10 @@ $(document).ready(function () {
 
 //adds clothing item to list of clothing items for given outfit
 function appendClothingItem(item, outfit) {
-	item = new Item(item.id, item.title, item.category, item.outfits)
-	$('.clothing-items').append(item.RemoveClothingItemLink(outfit.id))
+	$.get('/items/' + item.id + '.json', function(item) {
+		item = new Item(item.id, item.title, item.category, item.outfits)
+		$('.clothing-items').append(item.RemoveClothingItemLink(outfit.id))
+	})
 }
 
 //adds clothing item to lisst of clothing items not used in given outfit
