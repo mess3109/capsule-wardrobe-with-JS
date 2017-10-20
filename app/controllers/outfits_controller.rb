@@ -8,7 +8,7 @@ class OutfitsController < ApplicationController
 	def index
 		@outfits = current_user.outfits.sort_by { |outfit| outfit.season.title }
 		if !params[:season].blank?
-			@outfits = Outfit.by_season(params[:season])
+			@outfits = Outfit.by_season(params[:season]).by_user(current_user)
 		end
 		respond_to do |format|
 			format.html { render :index }
