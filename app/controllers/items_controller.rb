@@ -10,10 +10,7 @@ class ItemsController < ApplicationController
 	def show
 		respond_to do |format|
 			format.html { render :show }
-			format.json { render json: @item.to_json( 
-				:only => [:id, :title],
-				:include => [:category => { :only => [:id, :title] }]
-				)}
+			format.json { render json: @item}
 		end
 	end
 

@@ -9,21 +9,14 @@ class OutfitsController < ApplicationController
 		@outfits = current_user.outfits.sort_by { |outfit| outfit.season.title }
 		respond_to do |format|
 			format.html { render :index }
-			format.json { render json: @outfits.to_json(:only => [:id, :title],
-				:include => [:season => { :only => [:id, :title]}]
-				) }
+			format.json { render json: @outfits }
 		end
 	end
 
 	def show
 		respond_to do |format|
 			format.html { render :show }
-			format.json { render json: @outfit.to_json( 
-				:only => [:id, :title], 
-				include: [ { items:
-					{ :only => [:id, :title],  
-						:include => [:category => { only: [:id, :title] }]}}, 
-						{ :season => { :only => [:id, :title] }}])}
+			format.json { render json: @outfit }
 		end
 	end
 
