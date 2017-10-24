@@ -19,6 +19,23 @@ $(document).ready(function () {
 		})
 	});
 
+	$(".js-prev").on("click", function() {
+		let outfit_id = parseInt($("#outfit_id").attr("data-id"))
+		$.get('/outfits.json', function(data) {
+			data.sort(function(a,b) {return a.id - b.id});
+			for (var i = 0; i < data.length; i++) {
+				if (data[0].id === outfit_id){
+					alert('No more outfits!')
+					break;
+				} else if (data[i].id === outfit_id) {
+					let nextId = data[i - 1].id;
+					currentClothingItems(nextId)
+					showItemsNotUsed(nextId)
+				} 
+			}
+		})
+	});
+
 	//creates outfit preview on index page
 	$(document).on('click', '.outfit-show', function(e){
 		e.preventDefault()
