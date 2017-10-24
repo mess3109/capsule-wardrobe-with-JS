@@ -3,7 +3,9 @@ class ItemOutfitsController < ApplicationController
 	def create
 		current_user.current_outfit = Outfit.find(params[:outfit_id])
 		@item_outfit = current_user.current_outfit.add_item(params[:item_id])
-		render json: @item_outfit, :include => [:item, :outfit]
+		render json: @item_outfit.to_json(
+		 :include => [:item, :outfit] 
+		 )
 	end
 
 	def destroy
