@@ -1,5 +1,6 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :title, :color, :condition, :brand
+  # default_includes :category, :outfits
+  attributes :id, :title, :color, :condition, :brand, :category
   has_many :outfits
-  belongs_to :category
+ 
 end

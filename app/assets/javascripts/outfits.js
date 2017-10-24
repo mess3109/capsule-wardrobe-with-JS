@@ -73,6 +73,8 @@ $(document).ready(function () {
 		event.preventDefault();
 		var values = $(this).serialize();
 		$.post('/item_outfits', values).done(function (itemOutfit) {
+
+			debugger
 			$(`#item-${itemOutfit.item.id}`).remove();
 			appendClothingItem(itemOutfit.item, itemOutfit.outfit);
 		});
@@ -80,17 +82,15 @@ $(document).ready(function () {
 }); 
 
 //adds clothing item to list of clothing items for given outfit
-function appendClothingItem(item, outfit) {
-	$.get('/items/' + item.id + '.json', function(item) {
-		item = new Item(item.id, item.title, item.category, item.outfits)
-		$('.clothing-items').append(item.RemoveClothingItemLink(outfit.id))
-	})
+function appendClothingItem(itemAttributes, outfit) {
+	var item = new Item(itemAttributes)
+	$('.clothing-items').append(item.RemoveClothingItemLink(outfit.id))
 }
 
 //adds clothing item to lisst of clothing items not used in given outfit
 function appendClothingItemNotUsed(item_id, outfit_id) {
-	$.get('/items/' + item_id + '.json', function(item) {
-		item = new Item(item.id, item.title, item.category, item.outfits)
+	$.get('/items/' + item_id + '.json', function(itemAttributes) {
+		const item = new Item(itemAttributes)
 		$(".items-not-in-outfit").append(item.AddClothingItemLink(outfit_id))
 	})
 }
@@ -113,8 +113,8 @@ function currentClothingItems(outfit_id) {
 function showItemsNotUsed(outfit_id) {
 	$(".items-not-in-outfit").html("");
 	$.get("/outfits/" + outfit_id + "/items_not_used.json", function(items) {
-		items.forEach(function(item) {
-			item = new Item(item.id, item.title, item.category, item.outfits)
+		items.forEach(function(itemAttributes) {
+			const item = new Item(itemAttributes)
 			$(".items-not-in-outfit").append(item.AddClothingItemLink(outfit_id))
 		})
 	});
