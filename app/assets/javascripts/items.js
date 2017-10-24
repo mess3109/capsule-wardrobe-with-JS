@@ -18,11 +18,9 @@ $(document).ready(function () {
 	})
 
 function Item(attributes) {
-
 	for (var key in attributes) {
 		this[key] = attributes[key]
 	}
-	
 }
 
 Item.prototype.RemoveClothingItemLink = function(outfit_id) {

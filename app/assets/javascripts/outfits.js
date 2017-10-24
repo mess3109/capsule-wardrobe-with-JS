@@ -1,6 +1,4 @@
 $(document).ready(function () {
-	let user_id = parseInt($("#user_id").attr("data-id"))
-
 
 	$(".js-next").on("click", function() {
 		let outfit_id = parseInt($("#outfit_id").attr("data-id"))
@@ -55,8 +53,8 @@ $(document).ready(function () {
 	$.get('/outfits.json', function(data) {
 		$(".outfits").empty();
 		data.forEach(function(outfit) {
-			outfit = new Outfit(outfit.id, outfit.title, outfit.season, outfit.items)
-			$(".outfits").append(outfit.createOutfitLink())
+			const newOutfit = new Outfit(outfit)
+			$(".outfits").append(newOutfit.createOutfitLink())
 		})
 	})
 
@@ -73,8 +71,6 @@ $(document).ready(function () {
 		event.preventDefault();
 		var values = $(this).serialize();
 		$.post('/item_outfits', values).done(function (itemOutfit) {
-
-			debugger
 			$(`#item-${itemOutfit.item.id}`).remove();
 			appendClothingItem(itemOutfit.item, itemOutfit.outfit);
 		});
@@ -121,11 +117,10 @@ function showItemsNotUsed(outfit_id) {
 }
 
 //JS model object
-function Outfit(id, title, season, items) {
-	this.id = id
-	this.title = title
-	this.season = season
-	this.items = items
+function Outfit(attributes) {
+	for (var key in attributes) {
+		this[key] = attributes[key]
+	}
 }
 
 //link to outfit show page from outfit index page
