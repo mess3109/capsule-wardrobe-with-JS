@@ -1,7 +1,20 @@
-<h4>Wardrobe</h4>
+<div class="container">
+	<div class="fixed">
+		<h4>Wardrobe</h4>
+		<ul class="clothing-items-index">
 
-<ul>
-<% current_user.items_sorted_by_category.each do |item| %>
-	  <li> <%= image_tag item.image.url, size: "40x40" %> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %></li>
-<% end %>
-</ul>
+			<ul>
+				<% current_user.items_sorted_by_category.each do |item| %>
+				<li> <%= image_tag item.image.url, size: "40x40" %> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %></li>
+				<% end %>
+			</ul>
+
+		</ul>
+
+	</div>
+	<div class="flex-item">
+		<div class="item-show-spec">
+			
+		</div>
+	</div>
+</div>
