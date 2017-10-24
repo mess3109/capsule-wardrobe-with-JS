@@ -8,6 +8,9 @@ $(document).ready(function () {
 			.done(function(item) {
 				$('.item-show-spec').empty()
 				$('.item-show-spec').append(`<h4>${item.title}</h4>`)
+				$('.item-show-spec').append(`<br>Color: ${item.color}`)
+				$('.item-show-spec').append(`<br>Brand: ${item.brand}`)
+				$('.item-show-spec').append(`<br># of Outfits: ${item.outfits.length}`)
 				$('.item-show-spec').append(`<p><a href="/items/${item.id}">See more detail...</a></p>`)
 			})
 		})
