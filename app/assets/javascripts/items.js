@@ -1,3 +1,21 @@
+
+$(document).ready(function () {
+		//creates item preview on index page
+		$(document).on('click', '.item-show', function(e){
+			e.preventDefault()
+			let id = $(this).attr("data-id")
+			$.get(`/items/${id}.json`)
+			.done(function(item) {
+				$('.item-show-spec').empty()
+				$('.item-show-spec').append(`<h4>${item.title}</h4>`)
+				$('.item-show-spec').append(`<p><a href="/items/${item.id}">See more detail...</a></p>`)
+			})
+		})
+
+	})
+
+
+
 function Item(id, title, category, outfits) {
 	this.id = id
 	this.title = title
@@ -25,4 +43,12 @@ Item.prototype.AddClothingItemLink = function(outfit_id) {
 	</form></li>
 	`
 	return link
+}
+
+Item.prototype.createItemLink = function() {
+	let itemLink = `<li> 
+	${this.category.title} - 
+	<a class="item-show" data-id="${this.id}" href="/items/${this.id}">${this.title}</a>
+	</li>`
+	return itemLink
 }
