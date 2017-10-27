@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
 	"https://github.com/#{repo_name}.git"
 end
 
+ruby '2.3.1'
+
 gem 'rails', '~> 5.1.3'
 #Add SQLite to  development mode only
 # gem 'pg', group: :production # Added postgres and made it production only.
