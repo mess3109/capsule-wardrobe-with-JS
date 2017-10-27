@@ -1,0 +1,130 @@
+@import "bootstrap";
+/* Some Style from the Bootstrap Default Theme */
+
+body {
+  font-size: 14px;
+  font-family: arial;
+  margin: 0;
+}
+
+.main {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10;
+}
+
+/*.field_with_errors label {
+  padding: 0px;
+}
+
+.field_with_errors input[type="text"] {
+  border: 2px solid red;
+  display: block;
+  clear: both;
+  }*/
+
+  .error_messages {
+    color: red;
+  }
+
+  .navbar {
+    border-bottom: 1px solid black;
+    text-align: left;
+    background: #555;
+    padding: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .navbar a {
+    color: #ccc;
+    text-decoration: none;
+  }
+
+
+  /* links*/
+
+  .main a {
+    color: gray;
+    text-decoration: none;
+  }
+
+  /* mouse over link */
+  a:hover {
+    color: black;
+  }
+
+  /* selected link */
+  a:active {
+    color: gray;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .fixed{
+    width: 50%;
+  }
+  .flex-item{
+    width: 50%;
+    /*flex-grow: 1;*/
+  }
+
+  .delete-url {
+    /*Step 2: Basic Button Styles*/
+    display: inline-block;
+    background: white;
+    border: 1px solid gray;
+
+    /*Step 3: Text Styles*/
+    color: black;
+    text-align: center;
+    font-size: 10px;
+    -webkit-text-decoration-color: black;
+            text-decoration-color: black;
+
+    /*Step 4: Fancy CSS3 Styles*/
+    border-radius: 5px;
+    padding-bottom:2px;
+    padding-top:2px;
+    padding-left:5px;
+    padding-right:5px;
+
+  }
+
+  .items-not-in-outfit form {
+    display: inline-block;
+  }
+
+  .button, .delete-url {
+    background: white;
+    border: 1px solid gray;
+
+    /*Step 3: Text Styles*/
+    color: gray;
+    text-align: center;
+    font-size: 10px;
+
+    /*Step 4: Fancy CSS3 Styles*/
+    border-radius: 5px;
+    padding-bottom:2px;
+    padding-top:2px;
+    padding-left:5px;
+    padding-right:5px;
+  }
+
+  .button:hover {
+    color: black;
+  }
