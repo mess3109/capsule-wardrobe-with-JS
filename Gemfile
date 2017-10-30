@@ -20,12 +20,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'taps'
+#for paperclip/amazon web services
+gem 'aws-sdk', '~> 2'
+gem 'pg'
 
 group :development, :test do
 	gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 	gem 'capybara', '~> 2.13'
 	gem 'selenium-webdriver'
-	gem 'pg'
 end
 
 group :development do
@@ -45,6 +47,3 @@ gem 'jquery-rails'
 gem 'paperclip'
 gem 'active_model_serializers'
 
-group :production do
-	gem 'pg'
-end
