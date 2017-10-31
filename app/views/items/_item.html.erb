@@ -1,5 +1,5 @@
 <h4> <%= @item.title.titleize %></h4>
-<%= image_tag @item.image.url %>
+<%= image_tag @item.image.url, size:"100x100" %>
 <ul>
   <li> Category: <%= @item.category.title.titleize %> </li>
   <li> Color: <%= @item.color %> </li>

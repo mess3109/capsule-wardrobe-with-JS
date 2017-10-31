@@ -8,7 +8,12 @@ class Item < ApplicationRecord
 	validates :color, :presence => true
 	validates :category_id, :presence => true
 
-	has_attached_file :image, default_url: ':style/default.png', :styles => { :thumb => "10x10>" }
+	has_attached_file :image, default_url: ':style/default.png' 
+		# styles => {
+		# 	:thumb => "100x100#",
+		# 	:small  => "150x150>",
+		# 	:medium => "200x200" 
+		# }
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 	def category_attributes=(category)
