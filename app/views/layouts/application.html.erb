@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Capsule Wardrobe Organizer</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <%= render 'layouts/header' %>
-      </nav>
-    </header>
+<head>
+  <title>Capsule Wardrobe Organizer</title>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <header>
+      <%= render 'layouts/header' %>
+  </header>
   <div class="main">
     <%= yield %>
   </div>
-  </body>
+</body>
 </html>

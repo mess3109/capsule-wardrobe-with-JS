@@ -1,15 +1,25 @@
-<%= link_to "Home", root_url %> | 
- 
-<% if user_signed_in? %>
-  	<%= "#{current_user.email}" %>  | 
-  	<%= link_to "All Clothing", items_path %> |  
-  	<%= link_to "Add New Clothing Item", new_item_path %> | 
-  	<%= link_to "All Outfits", outfits_path %> | 
-  	<%= link_to "Add New Outfit", new_outfit_path %> | 
- 	<%= link_to("Sign out", destroy_user_session_path, :method => :delete) %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<%= link_to "Capsule Wardrobe Organizer", root_url , { class: 'navbar-brand' } %>
+		</div>
+		<ul class="nav navbar-nav">
+			<% if user_signed_in? %>
+			<li><%= link_to "Wardrobe", items_path %></li>
+			<li><%= link_to "Add to Wardrobe", new_item_path %></li>
+			<li><%= link_to "Outfits", outfits_path %></li> 
+			<li><%= link_to "Add New Outfit", new_outfit_path %></li> 
+			<% else %>
+			<li><%= link_to("Sign up", new_user_registration_path) %></li>
+			<li><%= link_to("Sign in", new_user_session_path) %></li>
+			<% end %>
+		</ul>
 
-<% else %>
-	<%= link_to("Sign up", new_user_registration_path) %> |
-  	<%= link_to("Sign in", new_user_session_path) %> |
- 	<%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
-<% end %>
+		<ul class="nav navbar-nav navbar-right">
+			<% if user_signed_in? %>
+			<li><%= link_to("Sign out", destroy_user_session_path, :method => :delete) %></li>
+			<% end %>
+		</ul>
+
+	</div>
+</nav>
