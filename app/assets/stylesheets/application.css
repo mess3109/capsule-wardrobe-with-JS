@@ -2,12 +2,15 @@
 /* Some Style from the Bootstrap Default Theme */\
 
 .container {
-  font-size: 14px;
-  font-family: arial;
-  padding-top: 50px; 
+  font-size: 12px;
+  font-family: arial; 
   padding-left: 10px; 
   padding-right: 10px; 
   padding-bottom: 10px; 
+}
+
+body {
+  padding-top: 60px; 
 }
 
 /*.field_with_errors label {
@@ -24,9 +27,9 @@
   position:fixed;  
   z-index:1; 
   width:100%;
-  height:40px;
-  vertical-align:middle;
-  line-height:40px;
+  height:25px;
+  vertical-align: middle;
+  line-height: 40px;
   top:0px;
 }
 
@@ -55,9 +58,9 @@ a:active {
   color: gray;
 }
 
-h4 {
+/*h4 {
   text-align: center;
-}
+}*/
 
 .container-left {
   display: flex;
