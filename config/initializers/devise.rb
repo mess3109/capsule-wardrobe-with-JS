@@ -277,4 +277,6 @@ Devise.setup do |config|
 
   config.omniauth :github, ENV['CLIENT_ID'], ENV['APP_SECRET'], :scope => 'user:email'
 
+  config.secret_key = ENV['DEVISE_SECRET']
+
 end
