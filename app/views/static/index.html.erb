@@ -1,3 +1,6 @@
+<h4><%= current_user.email%></h4>
+
+
 <% if user_signed_in? %>
 	<%= link_to "Most used clothing items", '/items/used?order=most' %> <p>
 

@@ -23,14 +23,14 @@ class Item < ApplicationRecord
 	end
 
 	scope :most_used_items, -> {
-		select("*, count(item_outfits.id) AS outfits_count").
+		select("items.id, items.title, items.category_id, count(item_outfits.id) AS outfits_count").
 		left_joins(:item_outfits).
 		group("items.id").
 		order("outfits_count DESC") 
 	}
 
 	scope :least_used_items, -> {
-		select("*, count(item_outfits.id) AS outfits_count").
+		select("items.id, items.title, items.category_id, count(item_outfits.id) AS outfits_count").
 		left_joins(:item_outfits).
 		group("items.id").
 		order("outfits_count ASC") 
