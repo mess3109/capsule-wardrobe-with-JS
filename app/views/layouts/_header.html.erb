@@ -1,25 +1,32 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+<nav class="navbar navbar-inverse">
+
+	<div class="container">
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
 			<%= link_to "Capsule Wardrobe Organizer", root_url , { class: 'navbar-brand' } %>
 		</div>
-		<ul class="nav navbar-nav">
-			<% if user_signed_in? %>
-			<li><%= link_to "Wardrobe", items_path %></li>
-			<li><%= link_to "Add to Wardrobe", new_item_path %></li>
-			<li><%= link_to "Outfits", outfits_path %></li> 
-			<li><%= link_to "Add New Outfit", new_outfit_path %></li> 
-			<% else %>
-			<li><%= link_to("Sign up", new_user_registration_path) %></li>
-			<li><%= link_to("Sign in", new_user_session_path) %></li>
-			<% end %>
-		</ul>
+		<div class="navbar-collapse collapse" id="navbar1">
+			<ul class="nav navbar-nav">
+				<% if user_signed_in? %>
+				<li><%= link_to "Wardrobe", items_path %></li>
+				<li><%= link_to "Add to Wardrobe", new_item_path %></li>
+				<li><%= link_to "Outfits", outfits_path %></li> 
+				<li><%= link_to "Add New Outfit", new_outfit_path %></li> 
+				<% end %>
+			</ul>
 
-		<ul class="nav navbar-nav navbar-right">
-			<% if user_signed_in? %>
-			<li><%= link_to("Sign out", destroy_user_session_path, :method => :delete) %></li>
-			<% end %>
-		</ul>
-
+			<ul class="nav navbar-nav navbar-right">
+				<% if user_signed_in? %>
+				<li><%= link_to("Sign out", destroy_user_session_path, :method => :delete) %></li>
+				<% else %>
+				<li><%= link_to("Sign up", new_user_registration_path) %></li>
+				<li><%= link_to("Sign in", new_user_session_path) %></li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </nav>

@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="flex-item">
-		<h4>Add clothing to outfit</h4>
+		<h4>Add Clothing to Outfit</h4>
 		<ul>
 			<div class="items-not-in-outfit">
 				<%= render partial: 'items/add_clothing', :locals => { :outfit => @outfit, :items => items_not_in_outfit(@outfit) } if has_items?(current_user) %>

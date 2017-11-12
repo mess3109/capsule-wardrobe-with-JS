@@ -1,17 +1,17 @@
-/*@import "bootstrap";*/
-/* Some Style from the Bootstrap Default Theme */\
+@import "bootstrap";
+/* Some Style from the Bootstrap Default Theme */
 
-.container {
+/*.container {
   font-size: 12px;
   font-family: arial; 
   padding-left: 10px; 
   padding-right: 10px; 
   padding-bottom: 10px; 
-}
+}*/
 
-body {
+/*body {
   padding-top: 60px; 
-}
+}*/
 
 /*.field_with_errors label {
   padding: 0px;
@@ -23,7 +23,7 @@ body {
   clear: both;
   }*/
 
-.navbar {
+/*.navbar {
   position:fixed;  
   z-index:1; 
   width:100%;
@@ -31,15 +31,15 @@ body {
   vertical-align: middle;
   line-height: 40px;
   top:0px;
-}
+}*/
 
 .error_messages {
   color: red;
 }
 
-.nav li {
+/*.nav li {
   font-size: 16px;
-}
+}*/
 
 /* links*/
 

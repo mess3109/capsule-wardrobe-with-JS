@@ -14,7 +14,6 @@ gem 'rails_12factor'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -43,8 +42,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'omniauth-github'
 gem 'dotenv-rails'
-gem 'bootstrap', '~> 4.0.0.beta'
-gem 'bootstrap-sass'
+gem "bootstrap-sass", "~> 3.1.1"
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'active_model_serializers'
