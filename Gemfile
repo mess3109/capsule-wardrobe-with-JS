@@ -42,7 +42,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'omniauth-github'
 gem 'dotenv-rails'
-gem "bootstrap-sass", "~> 3.1.1"
+gem 'bootstrap-sass', "~> 3.1.1"
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'active_model_serializers'
