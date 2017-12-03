@@ -24,3 +24,4 @@
 .byebug_history
 .env
 
+/public/system
