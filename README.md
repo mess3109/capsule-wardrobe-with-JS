@@ -1,5 +1,5 @@
 ## Capsule Wardrobe Organizer
-With this application users can keep track of clothing and manage outfits.
+With this application users can keep track of clothing and manage outfits.  [Here](https://capsule-wardrobe-organizer.herokuapp.com/) is a demo on Heroku (Email: mess.test.env@gmail.com, Password: capsulewardrobe). 
 
 ### Installation
 Fork and clone the repository.  Run `bundle install`, `rake db:migrate`, and `rails s`.
