@@ -1,6 +1,7 @@
-
 <% items.each do |item| %>
-<li id="item-<%= item.id %>"> <%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - 		
+<li id="item-<%= item.id %>">  
+	<%= render :partial => 'items/item_thumbnail', :locals => { :item => item } %>
+	<%= link_to item.title.titleize, item_path(item) %> - <%= item.category.title.titleize %> - 		
 	<%= form_tag do %>
 	<%= hidden_field_tag :item_id, item.id %>
 	<%= hidden_field_tag :outfit_id, outfit.id %>
